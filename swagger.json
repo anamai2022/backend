@@ -1,0 +1,452 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Project CRUD",
+      "description": "Project Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:4000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Users",
+        "description": "API for YFHS Data Authen"
+      },{
+        "name":"Questionnaire",
+        "description":"Project Application API"
+      }
+    ],
+    "schemes": ["http","https"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"], 
+    "securityDefinitions": {
+        "bearerAuth": {
+          "name": "Authorization",
+          "in": "header",
+          "type": "apiKey",
+          "description": "JWT Authorization header"
+        }
+      },
+      "security": [ { "bearerAuth": [] } ],  
+    "paths": {
+        "/User": {
+          "post": {
+            "tags": [
+              "Users"
+            ],
+            "description": "Create new user in system",
+            "parameters": [
+              {
+                "name": "user",
+                "in": "body",
+                "description": "User that we want to create",
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "New user is created",
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          } 
+        },
+        "/users": {
+          "get": {
+              "tags": [
+                "Users"
+              ],
+              "summary": "Get all users in system",
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+        },
+        "/users/{id}": {
+            "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "description": "ID of user that we want to find",
+                  "type": "integer"
+                }
+            ],            
+            "get": {
+                "tags": [
+                  "Users"
+                ],
+                "summary": "Get all users in system",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "$ref": "#/definitions/User"
+                    }
+                  }
+                }
+              }
+          }, 
+          "/users/{name}": {
+            "parameters": [
+                {
+                  "name": "name",
+                  "in": "path",
+                  "required": true,
+                  "description": "Name of user that we want to find",
+                  "type": "string"
+                }
+            ],            
+            "get": {
+                "tags": [
+                  "Users"
+                ],
+                "summary": "Get all users in system",
+                "responses": {
+                  "200": {
+                    "description": "OK",
+                    "schema": {
+                      "$ref": "#/definitions/User"
+                    }
+                  }
+                }
+              }
+          },                 
+        "/user/{id}": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID of user that we want to find",
+              "type": "integer"
+            }
+          ],
+          "delete": {
+            "summary": "Delete user with given ID",
+            "tags": [
+              "Users"
+            ],
+            "responses": {
+              "200": {
+                "description": "User is deleted",
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "put": {
+            "summary": "Update user with give ID",
+            "tags": [
+              "Users"
+            ],
+            "parameters": [
+              {
+                "name": "user",
+                "in": "body",
+                "description": "User with new values of properties",
+                "schema": {
+                  "$ref": "#/definitions/updateUser"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "User is updated",
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          },
+          "patch": {
+            "summary": "Update user with give ID",
+            "tags": [
+              "Users"
+            ],
+            "parameters": [
+              {
+                "name": "user",
+                "in": "body",
+                "description": "User with new values of properties",
+                "schema": {
+                  "$ref": "#/definitions/updateUser"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "User is updated",
+                "schema": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          }
+        }
+      },
+        "definitions": {
+          "Questionnaire": {
+            "required": ["name", "_id", "companies"],
+            "properties": {
+              "_id": {
+                "type": "integer",
+                "uniqueItems": true
+              },
+              "isPublic": {
+                "type": "boolean"
+              },
+              "name": {
+                "type": "string"
+              },
+              "books": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "companies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "Authen": {
+            "required": ["name", "_id", "companies"],
+            "properties": {
+              "_id": {
+                "type": "integer",
+                "uniqueItems": true
+              },
+              "isPublic": {
+                "type": "boolean"
+              },
+              "name": {
+                "type": "string"
+              },
+              "books": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "companies": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "User": {
+            "required": ["f_login", "f_code", "f_password","f_contactId"],
+            "properties": {
+              "f_code": {
+                "type": "integer",
+                "uniqueItems": true,
+                "description": "รหัสผู้ใช้"
+              },
+              "f_login": {
+                "type": "string",
+                "description": "ชื่อผู้ใช้งาน"
+              },
+              "f_password":{
+                "type": "string",
+                "description": "รหัสผ่านของผู้ใช้"
+             },
+             "f_usertype":{
+                "type": "integer",
+                "description": "ประเภทผู้ใช้งาน"
+             },           
+             "f_remark":{
+                "type": "string",
+                "description": "หมายเหตุ"
+             },           
+             "f_admintype":{
+                "type": "string",
+                "description": "สิทธิ์การใช้งานผู้ดูแลระบบ"
+             },           
+             "f_contactId":{
+                "type": "string",
+                "description": "รหัสรายชื่อพนักงาน"
+             },           
+             "f_createDate":{
+                "type": "string",
+                "description": "วันที่ ที่ทำการบันท"
+             },           
+             "f_createBy":{
+                "type": "string",
+                "description": "รหัสพนักงานในระบบf_login "
+             },           
+             "f_updateDate":{
+                "type": "string",
+                "description": "วันที่ ที่ทำการบันทึก"
+             },           
+             "f_updateBy":{
+                "type": "string",
+                "description": "รหัสพนักงานในระบบf_login "
+             },           
+             "f_status":{
+                "type": "boolean",
+                "description": "สถานะการใช้งาน  false = close true = open"
+             }
+            }
+          },
+          "updateUser": {
+            "required": ["f_login", "f_contactId"],
+            "properties": {
+                "f_login": {
+                  "type": "string",
+                  "description": "ชื่อผู้ใช้งาน"
+                },
+                "f_password":{
+                  "type": "string",
+                  "description": "รหัสผ่านของผู้ใช้"
+               },
+               "f_usertype":{
+                  "type": "integer",
+                  "description": "ประเภทผู้ใช้งาน"
+               },           
+               "f_remark":{
+                  "type": "string",
+                  "description": "หมายเหตุ"
+               },           
+               "f_admintype":{
+                  "type": "string",
+                  "description": "สิทธิ์การใช้งานผู้ดูแลระบบ"
+               },           
+               "f_contactId":{
+                  "type": "string",
+                  "description": "รหัสรายชื่อพนักงาน"
+               },           
+               "f_createDate":{
+                  "type": "string",
+                  "description": "วันที่ ที่ทำการบันท"
+               },           
+               "f_createBy":{
+                  "type": "string",
+                  "description": "รหัสพนักงานในระบบf_login "
+               },           
+               "f_updateDate":{
+                  "type": "string",
+                  "description": "วันที่ ที่ทำการบันทึก"
+               },           
+               "f_updateBy":{
+                  "type": "string",
+                  "description": "รหัสพนักงานในระบบf_login "
+               },           
+               "f_status":{
+                  "type": "boolean",
+                  "description": "สถานะการใช้งาน  false = close true = open"
+               }
+              }
+          },
+          "Year": {
+            "required": ["f_code"],
+            "properties": {
+              "f_code": {
+                "type": "integer",
+                "uniqueItems": true,
+                "description": "รหัส"
+              },
+              "f_detail": {
+                "type": "string",
+                "description": "ปีที่จะให้ระบบแสดง"
+              },        
+             "f_createDate":{
+                "type": "string",
+                "description": "วันที่ ที่ทำการบันท"
+             },           
+             "f_createBy":{
+                "type": "string",
+                "description": "รหัสพนักงานในระบบf_login "
+             },           
+             "f_updateDate":{
+                "type": "string",
+                "description": "วันที่ ที่ทำการบันทึก"
+             },           
+             "f_updateBy":{
+                "type": "string",
+                "description": "รหัสพนักงานในระบบf_login "
+             },           
+             "f_status":{
+                "type": "boolean",
+                "description": "สถานะการใช้งาน  false = close true = open"
+             }
+            }
+          },
+          "Mater": {
+            "required": ["f_MasterId","f_MasterGroup"],
+            "properties": {
+              "f_MasterId": {
+                "type": "integer",
+                "uniqueItems": true,
+                "description": "รหัส"
+              },
+              "f_MasterName": {
+                "type": "string",
+                "description": "รายละเอียด"
+              },         
+             "f_MasterGroup":{
+                "type": "string",
+                "description": "ประเภทกลุ่มข้อมูล"
+             },           
+             "f_createDate":{
+                "type": "string",
+                "description": "วันที่ ที่ทำการบันท"
+             },           
+             "f_createBy":{
+                "type": "string",
+                "description": "รหัสพนักงานในระบบf_login "
+             },           
+             "f_updateDate":{
+                "type": "string",
+                "description": "วันที่ ที่ทำการบันทึก"
+             },           
+             "f_updateBy":{
+                "type": "string",
+                "description": "รหัสพนักงานในระบบf_login "
+             },           
+             "f_status":{
+                "type": "boolean",
+                "description": "สถานะการใช้งาน  false = close true = open"
+             }
+            }
+          }          
+  }
+}
