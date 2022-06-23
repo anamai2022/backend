@@ -4,10 +4,10 @@ const app = express();
 const logger = require("morgan");
 const router = require("./routers/index");
 const swaggerUi = require('swagger-ui-express'),swaggerDocument = require('./swagger.json');
-
+const dbconfig = require('./confgs/database');
 const cors = require("cors");
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:4200','http://localhost:8081', 'http://localhost:8080'],
+    origin: ['https://yfhs.anamai.moph.go.th', 'http://localhost:8080'],
 }));
 app.use(logger("dev"));
 app.use(bodyParser.json());

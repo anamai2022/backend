@@ -1,0 +1,12 @@
+GET http://localhost:4000/logincode/ HTTP/1.1
+
+###
+GET http://localhost:4000/logincode/SSK1010942 HTTP/1.1
+
+###
+POST http://localhost:4000/logincode/ HTTP/1.1
+content-type: application/json
+
+{
+    "f_login": "SSK1010942"
+}
