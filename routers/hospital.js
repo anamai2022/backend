@@ -5,5 +5,5 @@ const router = express.Router();
 const hospitalController = require('../controllers/hospitalController');
 
 router.get("/:f_code",hospitalController.getProfile);
-router.get("/",hospitalController.getData);
+router.get("/",hospitalController.getAllData);
 module.exports = router;

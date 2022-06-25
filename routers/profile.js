@@ -5,5 +5,5 @@ const router = express.Router();
 const profileController = require('../controllers/profileController');
 
 router.get("/:f_code",profileController.getProfile);
-router.get("/",profileController.getData);
+router.get("/",profileController.getAllData);
 module.exports = router;

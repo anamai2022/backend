@@ -23,5 +23,16 @@ class ProfileModel {
         return err;
       });
   }
+
+  static findAll() {
+    return ProfileDB.findAll()
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
 }
 module.exports = ProfileModel;

@@ -23,5 +23,17 @@ class HospitalModel {
         return err;
       });
   }
+
+  static findAll() {
+    return HospitalDB.findAll()
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+
 }
 module.exports = HospitalModel;

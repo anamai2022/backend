@@ -22,8 +22,26 @@ exports.getProfile = (req, res) => {
     });
   });  
 }
-exports.getData = (req, res) => {
-  res.status(200).json({ message: "getData" });
-};
 
+exports.getAllData = (req, res) => {
+  profileModel.findAll()
+  .then((result) => {
+    if(result.length > 0){     
+      res.json({
+        result:result,
+        messagesboxs: 'Success',
+      });
+    }else{
+      res.json({
+        result:"null",
+        messagesboxs: 'unSuccess',
+      });
+    }
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: error,
+    });
+  }); 
+};
 exports.profileController = (req, res, next) => {};
