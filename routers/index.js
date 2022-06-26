@@ -18,5 +18,7 @@ router.use("/hospital", hospitalRouter);
 const questionnaireRouter = require("./questionnaire");
 router.use("/questionnaire", questionnaireRouter);
 
+const masterRouter = require("./master");
+router.use("/master", masterRouter);
 
 module.exports = router;

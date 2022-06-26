@@ -1,8 +1,8 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const contactModel = require("../models/contactModel");
-exports.getProfile = (req, res) => {
-  contactModel.findByCode(req.params.f_code)
+const masterModel = require("../models/masterModel");
+exports.getScore = (req, res) => {
+  masterModel.findMasterAll()
   .then((result) => {
     if(result.length > 0){     
       res.json({
@@ -21,9 +21,9 @@ exports.getProfile = (req, res) => {
       messagesboxs: error,
     });
   });  
-}
-exports.getData = (req, res) => {
-  contactModel.findAll()
+};
+exports.getYear = (req, res) => {
+  masterModel.findYearAll()
   .then((result) => {
     if(result.length > 0){     
       res.json({
@@ -44,4 +44,49 @@ exports.getData = (req, res) => {
   }); 
 };
 
-exports.contactController = (req, res, next) => {};
+exports.getZoneArea = (req, res) => {
+  masterModel.findYearAll()
+  .then((result) => {
+    if(result.length > 0){     
+      res.json({
+        result:result,
+        messagesboxs: 'Success',
+      });
+    }else{
+      res.json({
+        result:"null",
+        messagesboxs: 'unSuccess',
+      });
+    }
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: error,
+    });
+  }); 
+};
+
+
+exports.getAllData = (req, res) => {
+  masterModel.findMasterAll()
+  .then((result) => {
+    if(result.length > 0){     
+      res.json({
+        result:result,
+        messagesboxs: 'Success',
+      });
+    }else{
+      res.json({
+        result:"null",
+        messagesboxs: 'unSuccess',
+      });
+    }
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: error,
+    });
+  }); 
+};
+
+exports.masterController = (req, res, next) => {};
