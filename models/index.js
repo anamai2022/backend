@@ -29,4 +29,5 @@ db.MasterDB = require('../schema/master/index')(sequelize, Sequelize);
 db.ScoreDB = require('../schema/master/score')(sequelize, Sequelize);
 db.YearDB = require('../schema/master/year')(sequelize, Sequelize);
 db.ZoneAreaDB = require('../schema/master/zonearea')(sequelize, Sequelize);
+db.QuestionnaireDB = require('../schema/Questionnaire/index')(sequelize, Sequelize);
 module.exports = db;

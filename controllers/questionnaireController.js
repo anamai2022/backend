@@ -1,6 +1,47 @@
 const express = require("express");
+const questionnaireModel = require("../models/questionnaireModel");
+
+exports.searchByGroup = (req, res)=>{ 
+  questionnaireModel.findByCode(req.params.group)
+  .then((result) => {
+    if(result.length > 0){     
+      res.json({
+        result:result,
+        messagesboxs: 'Success',
+      });
+    }else{
+      res.json({
+        result:"null",
+        messagesboxs: 'unSuccess',
+      });
+    }
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: error,
+    });
+  });  
+}
 exports.getData = (req, res) => {
-  res.status(200).json({ message: "getData" });
+  questionnaireModel.findAll()
+  .then((result) => {
+    if(result.length > 0){     
+      res.json({
+        result:result,
+        messagesboxs: 'Success',
+      });
+    }else{
+      res.json({
+        result:"null",
+        messagesboxs: 'unSuccess',
+      });
+    }
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: error,
+    });
+  });  
 };
 exports.searchById = (req, res) => {
   res.status(200).json({ message: "searchById" });

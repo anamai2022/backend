@@ -9,7 +9,13 @@ const ScoreDB = db.ScoreDB;
 class MasterModel {
 
     static findMasterAll() {
-        return MasterDB.findAll()
+        return MasterDB.findAll({
+            where:{
+              f_status: {
+                [Op.eq]: 1,
+              },
+            },          
+          })
           .then((result) => {
             return result;
           })
@@ -18,7 +24,13 @@ class MasterModel {
           });
       }
       static findYearAll() {
-        return YearDB.findAll()
+        return YearDB.findAll({
+          where:{
+            f_status: {
+              [Op.eq]: 1,
+            },
+          },          
+        })
           .then((result) => {
             return result;
           })
@@ -28,7 +40,13 @@ class MasterModel {
       } 
       
       static findZoneAreaAll() {
-        return ZoneAreaDB.findAll()
+        return ZoneAreaDB.findAll({
+          where:{
+            f_status: {
+              [Op.eq]: 1,
+            },
+          },          
+        })
           .then((result) => {
             return result;
           })
@@ -38,7 +56,13 @@ class MasterModel {
       } 
 
       static findScoreAll() {
-        return ScoreDB.findAll()
+        return ScoreDB.findAll({
+          where:{
+            f_status: {
+              [Op.eq]: 1,
+            },
+          },          
+        })
           .then((result) => {
             return result;
           })

@@ -16,6 +16,8 @@ router.get(
   function (req, res) {}
 );
 
+router.get('/group/:group', questionnaireControllers.searchByGroup,function (req, res) {})
+
 router.get(
     "/:f_name",
     questionnaireControllers.searchByName,

@@ -2,7 +2,7 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const masterModel = require("../models/masterModel");
 exports.getScore = (req, res) => {
-  masterModel.findMasterAll()
+  masterModel.findScoreAll()
   .then((result) => {
     if(result.length > 0){     
       res.json({
@@ -45,7 +45,7 @@ exports.getYear = (req, res) => {
 };
 
 exports.getZoneArea = (req, res) => {
-  masterModel.findYearAll()
+  masterModel.findZoneAreaAll()
   .then((result) => {
     if(result.length > 0){     
       res.json({
