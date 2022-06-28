@@ -34,5 +34,35 @@ class ProfileModel {
       });
   }
 
+  static SaveData(body) {
+    return ProfileDB.create(body)
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  static getUpdateData(f_code,body){
+    return ProfileDB.update(body,{ where: { f_code: f_code }})
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  static getUpdateAll(body,f_code){
+    return ProfileDB.update(body,{ where: { f_code: f_code }})
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }  
+
 }
 module.exports = ProfileModel;

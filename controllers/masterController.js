@@ -89,4 +89,27 @@ exports.getAllData = (req, res) => {
   }); 
 };
 
+
+exports.getAllLevel = (req, res) => {
+  masterModel.findMasterAll()
+  .then((result) => {
+    if(result.length > 0){     
+      res.json({
+        result:result,
+        messagesboxs: 'Success',
+      });
+    }else{
+      res.json({
+        result:"null",
+        messagesboxs: 'unSuccess',
+      });
+    }
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: error,
+    });
+  }); 
+};
+
 exports.masterController = (req, res, next) => {};

@@ -34,6 +34,35 @@ class HospitalModel {
       });
   }
 
+  static SaveData(body) {
+    return HospitalDB.create(body)
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  static getUpdateData(f_code,body){
+    return HospitalDB.update(body,{ where: { f_code: f_code }})
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  static getUpdateAll(body,f_code){
+    return HospitalDB.update(body,{ where: { f_code: f_code }})
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }  
 
 }
 module.exports = HospitalModel;

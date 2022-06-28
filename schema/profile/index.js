@@ -11,9 +11,9 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.STRING,
           field: "f_hospitalcode",
         },
-        f_vsion: {
+        f_vision: {
           type: Sequelize.STRING,
-          field: "f_vsion",
+          field: "f_vision",
         },
         f_mistion: {
           type: Sequelize.STRING,
