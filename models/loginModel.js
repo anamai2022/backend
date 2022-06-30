@@ -44,7 +44,7 @@ static findLoginByCode(f_login) {
           [Op.eq]: 1,
         },
         f_usertype: {
-            [Op.eq]: 2,
+            [Op.ne]: 1,
         },
       },
     })
