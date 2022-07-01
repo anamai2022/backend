@@ -25,6 +25,8 @@ const contactController = require('../controllers/contactController');
 router.get("/:f_code",authenticateJWT,contactController.getProfile);
 router.get("/name/:f_name",authenticateJWT, contactController.getProfileName);
 router.get("/",authenticateJWT, contactController.getAllData);
-router.patch("/:f_code",contactController.getUpdateData,authenticateJWT); //PATCH - ใช้สำหรับ update ข้อมูลเฉพาะ field ที่เราส่งไป ( ถ้า field ไหนเราไม่ได้ส่งไปให้ คือใช้ค่าเดิม )
-router.put("/:f_code",contactController.getUpdateAll,authenticateJWT); //PUT - ใช้สำหรับ update ข้อมูลทั้งหมดทุก field ( อัพเดททั้ง doc หรือทั้ง record จากข้อมูลเก่าให้เป็นข้อมูลชุดที่ส่งมาอัพเดทแทน )
+router.post("/",authenticateJWT,contactController.getSaveData);
+router.patch("/:f_code",authenticateJWT,contactController.getUpdateData); 
+router.put("/:f_code",authenticateJWT,contactController.getUpdateAll); 
+router.delete("/:f_code",authenticateJWT,contactController.getDeleteData)
 module.exports = router;

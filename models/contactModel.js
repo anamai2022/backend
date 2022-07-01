@@ -53,8 +53,8 @@ class ContactModel {
       });
   }
 
-  static updateAll() {
-    return ContactDB.findAll()
+  static updateAll(f_code,body) {
+    return ContactDB.update(body,{ where: { f_contactId: f_code }})
       .then((result) => {
         return result;
       })
@@ -63,8 +63,8 @@ class ContactModel {
       });
   }
 
-  static updateData() {
-    return ContactDB.findAll()
+  static updateData(f_code,body) {
+    return ContactDB.update(body,{ where: { f_contactId: f_code }})
       .then((result) => {
         return result;
       })
@@ -72,5 +72,27 @@ class ContactModel {
         console.log(err);
       });
   }
+  static deleteData(f_code) {
+    return ContactDB.destroy({
+      where: { f_contactId: f_code },
+    })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  static insertDB(payload) {
+    return ContactDB.create(payload)
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
 }
 module.exports = ContactModel;

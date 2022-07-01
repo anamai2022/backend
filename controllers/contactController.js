@@ -65,7 +65,7 @@ exports.getAllData = (req, res) => {
   }); 
 };
 exports.getUpdateData = (req, res) => {
-  contactModel.updateData(req.params.f_code)
+  contactModel.updateData(req.params.f_code,req.body)
   .then((result) => {
     if(result.length > 0){     
       res.json({
@@ -87,7 +87,8 @@ exports.getUpdateData = (req, res) => {
 }
 
 exports.getUpdateAll = (req, res) => {
-  contactModel.updateAll(req.params.f_code)
+  console.log('Get update : ',req.params.f_code, req.body)
+  contactModel.updateAll(req.params.f_code,req.body)
   .then((result) => {
     if(result.length > 0){     
       res.json({
@@ -107,4 +108,35 @@ exports.getUpdateAll = (req, res) => {
     });
   });  
 }
+
+exports.getDeleteData = (req, res) => {
+  contactModel.deleteData(req.params.f_code)
+  .then((result) => {
+    res.status(201).json({
+      messagesboxs: 'Success',
+      result:result,
+    });
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: error,
+    });
+  });  
+}
+
+exports.getSaveData = (req, res) =>{
+  contactModel.insertDB(req.body)
+    .then((result) => {
+      res.status(201).json({
+        messagesboxs: 'Success',
+        result:result,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: error,
+      });
+    });
+}
+
 exports.contactController = (req, res, next) => {};
