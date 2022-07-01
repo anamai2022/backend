@@ -2,7 +2,7 @@
 @port = 4000
 @host = {{hostname}}:{{port}}
 @contentType = application/json
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmX2NvZGUiOjc0NCwiZl9sb2dpbiI6IlNTSzEwMTA5NDIiLCJpYXQiOjE2NTY2ODA3OTQsImV4cCI6MTY1NjY4NDM5NH0.IsdTXv3vZ92i9kkv9370AkvMk93OEGHJzsrflIXeTBk
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmX2NvZGUiOjc0NCwiZl9sb2dpbiI6IlNTSzEwMTA5NDIiLCJpYXQiOjE2NTY2ODcxMjksImV4cCI6MTY1NjY5MDcyOX0.yMsqNl5uWuaj80YopJnvyFpY17o6th4ieZV2c0POOeI
 @contactId = 3
 ###
 GET http://{{host}}/contact/ HTTP/1.1
