@@ -2,9 +2,6 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-
-const contactController = require('../controllers/contactController');
-
 const authenticateJWT = (req, res, next) => {
 	const authHeader = req.headers.authorization;
     
@@ -23,6 +20,7 @@ const authenticateJWT = (req, res, next) => {
 	    res.sendStatus(401);
 	}
     };
+const contactController = require('../controllers/contactController');
 
 router.get("/:f_code",authenticateJWT,contactController.getProfile);
 router.get("/name/:f_name",authenticateJWT, contactController.getProfileName);
