@@ -1,5 +1,4 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const contactModel = require("../models/contactModel");
 exports.getProfile = (req, res) => {
   contactModel.findByCode(req.params.f_code)
