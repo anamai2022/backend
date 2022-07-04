@@ -21,4 +21,7 @@ router.use("/questionnaire", questionnaireRouter);
 const masterRouter = require("./master");
 router.use("/master", masterRouter);
 
+const userRouter = require("./users");
+router.use("/user", userRouter);
+
 module.exports = router;

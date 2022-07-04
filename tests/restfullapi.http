@@ -2,8 +2,10 @@
 @port = 4000
 @host = {{hostname}}:{{port}}
 @contentType = application/json
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmX2NvZGUiOjc0NCwiZl9sb2dpbiI6IlNTSzEwMTA5NDIiLCJpYXQiOjE2NTY2ODcxMjksImV4cCI6MTY1NjY5MDcyOX0.yMsqNl5uWuaj80YopJnvyFpY17o6th4ieZV2c0POOeI
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmX2NvZGUiOjc0NCwiZl9sb2dpbiI6IlNTSzEwMTA5NDIiLCJpYXQiOjE2NTY5MDQxNTUsImV4cCI6MTY1NjkwNzc1NX0.ATYKT68LsU1GlFRlVBhHA2N2GxmyaDmDmQHSnCU6L7g
 @contactId = 3
+@userId = 3
+@userName="TestName"
 ###
 GET http://{{host}}/contact/ HTTP/1.1
 Content-Type: {{contentType}}
@@ -116,5 +118,59 @@ Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
 ###
 GET http://{{host}}/master/zonearea HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+
+###
+GET http://{{host}}/user/ HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+###
+GET http://{{host}}/user/{{userId}} HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+###
+GET http://{{host}}/user/name/{{userName}} HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+
+###
+POST  http://{{host}}/user/
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+{
+    "f_firstName": "name test",
+    "f_lastName": "lastname test",
+    "f_email":"info@gmail.com",
+    "f_createDate":"2565-01-06 11:00:00",
+    "f_createBy":"1",
+    "f_updateDate":"2565-01-06 11:00:00",
+    "f_updateBy":"1",
+    "f_status":"1"
+}
+###
+PUT http://{{host}}/user/{{userId}} //PUT - ใช้สำหรับ update ข้อมูลทั้งหมดทุก field 
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+{
+    "f_firstName": "TestName",
+    "f_lastName": "lastname",
+    "f_nickname":"Nick",
+    "f_phone":"info@gmail.com",
+    "f_email":"",
+    "f_line":"",
+    "f_remark":""
+}
+###
+PATCH http://{{host}}/user/{{userId}} ////PATCH - ใช้สำหรับ update ข้อมูลเฉพาะ field ที่เราส่งไป
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+{
+    "f_firstName":"",
+    "f_lastName":""
+} 
+### 
+DELETE http://{{host}}/user/{{userId}}
 Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
