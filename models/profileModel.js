@@ -57,6 +57,7 @@ class ProfileModel {
   static getUpdateAll(body,f_code){
     return ProfileDB.update(body,{ where: { f_code: f_code }})
     .then((result) => {
+      console.log(result)
       return result;
     })
     .catch((err) => {

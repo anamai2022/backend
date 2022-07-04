@@ -12,7 +12,7 @@ exports.getProfile = (req, res) => {
     }else{
       res.json({
         result:"null",
-        messagesboxs: 'ไม่พบผู้ใช้งานในระบบ',
+        messagesboxs: 'unSuccess',
       });
     }
   })
@@ -47,20 +47,13 @@ exports.getAllData = (req, res) => {
 
 
 exports.getSaveProfile = (req, res) =>{
-  console.log('param : ',req.params.f_code,'payload : ',req.body)
-  hospitalModel.SaveData(req.body)
+  console.log('payload SAVE : ',req.body)
+  profileModel.SaveData(req.body)
   .then((result) => {
-    if(result.length > 0){     
-      res.json({
-        result:result,
-        messagesboxs: 'Success',
-      });
-    }else{
-      res.json({
-        result:"null",
-        messagesboxs: 'unSuccess',
-      });
-    }
+    res.json({
+      result:result,
+      messagesboxs: 'Success',
+    })
   })
   .catch((error) => {
     res.status(500).json({
@@ -70,7 +63,8 @@ exports.getSaveProfile = (req, res) =>{
 };
 
 exports.getUpdateData = (req, res) =>{
-  hospitalModel.getUpdateData(req.params.f_code,req.body)
+  console.log('payload Update Data : ',req.params.f_code,req.body)
+  profileModel.getUpdateData(req.params.f_code,req.body)
   .then((result) => {
     if(result.length > 0){     
       res.json({
@@ -92,8 +86,8 @@ exports.getUpdateData = (req, res) =>{
 };
 
 exports.getUpdateAll = (req, res) =>{
-  console.log(req.params.f_code,req.body)
-  hospitalModel.getUpdateAll(req.body,req.params.f_code)
+  console.log('payload Update All Data : ',req.params.f_code,req.body)
+  profileModel.getUpdateAll(req.body,req.params.f_code)
   .then((result) => {
     if(result.length > 0){     
       res.json({

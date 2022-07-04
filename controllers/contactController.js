@@ -10,7 +10,6 @@ exports.getProfile = (req, res) => {
       });
     }else{
       res.json({
-        result:"null",
         messagesboxs: 'unSuccess',
       });
     }
@@ -31,8 +30,7 @@ exports.getProfileName = (req, res) => {
         messagesboxs: 'Success',
       });
     }else{
-      res.json({
-        result:"null",
+      res.json({        
         messagesboxs: 'unSuccess',
       });
     }
@@ -53,7 +51,6 @@ exports.getAllData = (req, res) => {
       });
     }else{
       res.json({
-        result:"null",
         messagesboxs: 'unSuccess',
       });
     }
@@ -74,7 +71,6 @@ exports.getUpdateData = (req, res) => {
       });
     }else{
       res.json({
-        result:"null",
         messagesboxs: 'unSuccess',
       });
     }
@@ -97,7 +93,6 @@ exports.getUpdateAll = (req, res) => {
       });
     }else{
       res.json({
-        result:"null",
         messagesboxs: 'unSuccess',
       });
     }
