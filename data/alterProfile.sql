@@ -19,3 +19,9 @@ ADD COLUMN `f_position` VARCHAR(100) NULL AFTER `f_institution`;
 ALTER TABLE `yfhsApp`.`tbl_Contact` 
 CHANGE COLUMN `f_createBy` `f_createBy` VARCHAR(100) NULL DEFAULT NULL ,
 CHANGE COLUMN `f_updateBy` `f_updateBy` VARCHAR(100) NULL DEFAULT NULL ;
+
+
+ALTER TABLE `yfhsApp`.`tbl_Profile` 
+CHANGE COLUMN `f_director` `f_director` VARCHAR(100) NULL DEFAULT NULL ,
+CHANGE COLUMN `f_physician` `f_physician` VARCHAR(100) NULL DEFAULT NULL ,
+CHANGE COLUMN `f_responsiblePerson` `f_responsiblePerson` VARCHAR(100) NULL DEFAULT NULL ;
