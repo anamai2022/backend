@@ -69,6 +69,64 @@ class MasterModel {
           .catch((err) => {
             console.log(err);
           });
-      }           
+      }  
+      
+      static findOrganizationAll() {
+        return MasterDB.findAll({
+          where:{
+            f_status: {
+              [Op.eq]: 1,
+            },
+            f_MasterGroup:{
+              [Op.eq]: 200001,
+            },
+          },          
+        })
+          .then((result) => {
+            return result;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+      static findPositionAll() {
+        return MasterDB.findAll({
+          where:{
+            f_status: {
+              [Op.eq]: 1,
+            },
+            f_MasterGroup:{
+              [Op.eq]: 400001,
+            },
+          },          
+        })
+          .then((result) => {
+            return result;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+      static findInstitutionAll() {
+        return MasterDB.findAll({
+          where:{
+            f_status: {
+              [Op.eq]: 1,
+            },
+            f_MasterGroup:{
+              [Op.eq]: 300001,
+            },
+          },          
+        })
+          .then((result) => {
+            return result;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
 }
 module.exports = MasterModel;

@@ -120,6 +120,7 @@ exports.getDeleteData = (req, res) => {
 }
 
 exports.getSaveData = (req, res) =>{
+  console.log(req.body)
   contactModel.insertDB(req.body)
     .then((result) => {
       res.status(201).json({
