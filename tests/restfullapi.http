@@ -2,8 +2,9 @@
 @port = 4000
 @host = {{hostname}}:{{port}}
 @contentType = application/json
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmX2NvZGUiOjIzNywiZl9sb2dpbiI6InRob2VuZ2hvczAxIiwiaWF0IjoxNjU2OTQ4Mzg5LCJleHAiOjE2NTY5NTE5ODl9.9wLW2nTaP0jils-chnszEjJOVT4TplwIjxOyLxakRrI
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmX2NvZGUiOjE4LCJmX2xvZ2luIjoiQlRDMDY5WUZIUyIsImlhdCI6MTY1NzAwNjcwMiwiZXhwIjoxNjU3MDEwMzAyfQ.BbJFk8VVtx5Cf0GY54eK0fXeTbGzVCTTbFThfrPy5BU
 @contactId = 3
+@contactName =SaveContact
 @userId = 3
 @userName="TestName"
 ###
@@ -15,7 +16,7 @@ GET http://{{host}}/contact/28823 HTTP/1.1
 Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
 ###
-GET http://{{host}}/contact/name/Thanit HTTP/1.1
+GET http://{{host}}/contact/name/{{contactName}} HTTP/1.1
 Content-Type: {{contentType}}
 Authorization: Bearer {{accessToken}}
 
