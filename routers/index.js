@@ -24,4 +24,7 @@ router.use("/master", masterRouter);
 const userRouter = require("./users");
 router.use("/user", userRouter);
 
+const appoveRouter = require("./appove");
+router.use("/appove", appoveRouter);
+
 module.exports = router;

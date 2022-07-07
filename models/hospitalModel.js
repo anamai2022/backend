@@ -24,6 +24,26 @@ class HospitalModel {
       });
   }
 
+  static findHospitalZoneAreByCode(f_code) {
+    return HospitalDB.findAll({
+      where: {
+        f_zoneArea: {
+          [Op.eq]: f_code,
+        },
+        f_status: {
+          [Op.eq]: 1,
+        },
+      },
+    })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        console.log(err);
+        return err;
+      });
+  }
+
   static findAll() {
     return HospitalDB.findAll()
       .then((result) => {
