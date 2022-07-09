@@ -23,12 +23,13 @@ exports.loginCode = (req, res) => {
     }else{
       res.json({
         result:"null",
-        messagesboxs: 'ไม่พบผู้ใช้งานในระบบ',
+        messagesboxs: 'unSuccess',
       });
     }
   })
   .catch((error) => {
     res.status(500).json({
+      messagesboxs: 'unSuccess',
       messagesboxs: error,
     });
   });  

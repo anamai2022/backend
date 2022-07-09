@@ -19,8 +19,7 @@ class QuestionnaireModel {
       .then((result) => {
         return result;
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((err) => {        
         return err;
       });
   }
@@ -36,8 +35,7 @@ class QuestionnaireModel {
       .then((result) => {
         return result;
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((err) => {        
         return err;
       });
   }

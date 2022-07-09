@@ -18,6 +18,7 @@ exports.getProfile = (req, res) => {
   })
   .catch((error) => {
     res.status(500).json({
+      messagesboxs: 'unSuccess',
       messagesboxs: error,
     });
   });  
@@ -40,6 +41,7 @@ exports.getAllData = (req, res) => {
   })
   .catch((error) => {
     res.status(500).json({
+      messagesboxs: 'unSuccess',
       messagesboxs: error,
     });
   }); 
@@ -80,6 +82,7 @@ exports.getUpdateData = (req, res) =>{
   })
   .catch((error) => {
     res.status(500).json({
+      messagesboxs: 'unSuccess',
       messagesboxs: error,
     });
   }); 
@@ -103,6 +106,7 @@ exports.getUpdateAll = (req, res) =>{
   })
   .catch((error) => {
     res.status(500).json({
+      messagesboxs: 'unSuccess',
       messagesboxs: error,
     });
   }); 

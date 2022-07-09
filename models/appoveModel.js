@@ -19,7 +19,6 @@ class ContactModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
         return err;
       });
   }
@@ -38,7 +37,6 @@ class ContactModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
         return err;
       });
   }
@@ -49,7 +47,7 @@ class ContactModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
 
@@ -59,7 +57,7 @@ class ContactModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
 
@@ -69,7 +67,7 @@ class ContactModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
   static deleteData(f_code) {
@@ -80,7 +78,7 @@ class ContactModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
 
@@ -90,7 +88,7 @@ class ContactModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
 

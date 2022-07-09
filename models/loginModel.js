@@ -23,7 +23,6 @@ static findLoginByCode(f_login) {
         return result;
       })
       .catch((err) => {
-        console.log(err);
         return err;
       });
   }
@@ -41,8 +40,7 @@ static findLoginByCode(f_login) {
       .then((result) => {
         return result;
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((err) => {        
         return err;
       });
   }  

@@ -18,8 +18,7 @@ class ProfileModel {
       .then((result) => {
         return result;
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((err) => {        
         return err;
       });
   }
@@ -30,7 +29,7 @@ class ProfileModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
 
@@ -40,7 +39,7 @@ class ProfileModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
 
@@ -50,18 +49,17 @@ class ProfileModel {
       return result;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
   }
 
   static getUpdateAll(body,f_code){
     return ProfileDB.update(body,{ where: { f_code: f_code }})
     .then((result) => {
-      console.log(result)
       return result;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
   }  
 

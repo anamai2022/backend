@@ -2,12 +2,12 @@ const express = require("express");
 const Sequelize = require("sequelize");
 const db = require("../models/index");
 const Op = db.Sequelize.Op;
-const UserContactDB = db.UserContactDB;
-class userModel {
+const UploadDB = db.UploadDB;
+class UploadModel {
   static findByCode(f_code) {
-    return UserContactDB.findAll({
+    return UploadDB.findAll({
       where: {
-        f_contactId: {
+        f_code: {
           [Op.eq]: f_code,
         },
         f_status: {
@@ -22,29 +22,11 @@ class userModel {
         return err;
       });
   }
-static findByCodeSendProfile(f_code){
-  return UserContactDB.findAll({
-    where: {
-      f_contactId: {
-        [Op.eq]: f_code,
-      },
-      f_status: {
-        [Op.eq]: 1,
-      },
-    },
-  })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      return err;
-    });
-}
-  static findByName(f_name) {
-    return UserContactDB.findAll({
+  static findByDocumentRunning(f_docrunning) {
+    return UploadDB.findAll({
       where: {
-        f_firstName: {
-          [Op.eq]: f_name,
+        f_docrunning: {
+          [Op.eq]: f_docrunning,
         },
         f_status: {
           [Op.eq]: 1,
@@ -60,17 +42,17 @@ static findByCodeSendProfile(f_code){
   }
   
   static findAll() {
-    return UserContactDB.findAll()
+    return UploadDB.findAll()
       .then((result) => {
         return result;
       })
       .catch((err) => {
-        return err;
+        return err;      
       });
   }
 
   static updateAll(f_code,body) {
-    return UserContactDB.update(body,{ where: { f_contactId: f_code }})
+    return UploadDB.update(body,{ where: { f_code: f_code }})
       .then((result) => {
         return result;
       })
@@ -80,7 +62,7 @@ static findByCodeSendProfile(f_code){
   }
 
   static updateData(f_code,body) {
-    return UserContactDB.update(body,{ where: { f_contactId: f_code }})
+    return v.update(body,{ where: { f_code: f_code }})
       .then((result) => {
         return result;
       })
@@ -89,8 +71,8 @@ static findByCodeSendProfile(f_code){
       });
   }
   static deleteData(f_code) {
-    return UserContactDB.destroy({
-      where: { f_contactId: f_code },
+    return UploadDB.destroy({
+      where: { f_code: f_code },
     })
       .then((result) => {
         return result;
@@ -101,7 +83,7 @@ static findByCodeSendProfile(f_code){
   }
 
   static insertDB(payload) {
-    return UserContactDB.create(payload)
+    return UploadDB.create(payload)
       .then((result) => {
         return result;
       })
@@ -111,4 +93,4 @@ static findByCodeSendProfile(f_code){
   }
 
 }
-module.exports = userModel;
+module.exports = UploadModel;

@@ -23,6 +23,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.AuthenDB = require('../schema/user/authen')(sequelize, Sequelize);
 db.UserContactDB = require('../schema/user/contact')(sequelize, Sequelize);
+db.UploadDB = require('../schema/upload/index')(sequelize, Sequelize);
 db.ProfileDB = require('../schema/profile/index')(sequelize, Sequelize);
 db.ContactDB = require('../schema/contact/index')(sequelize, Sequelize);
 db.HospitalDB = require('../schema/hospital/index')(sequelize, Sequelize);

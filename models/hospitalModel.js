@@ -19,7 +19,6 @@ class HospitalModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
         return err;
       });
   }
@@ -38,8 +37,7 @@ class HospitalModel {
       .then((result) => {
         return result;
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((err) => {        
         return err;
       });
   }
@@ -50,7 +48,7 @@ class HospitalModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
 
@@ -60,7 +58,7 @@ class HospitalModel {
         return result;
       })
       .catch((err) => {
-        console.log(err);
+        return err;
       });
   }
 
@@ -70,7 +68,7 @@ class HospitalModel {
       return result;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
   }
 
@@ -80,7 +78,7 @@ class HospitalModel {
       return result;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
   }  
 

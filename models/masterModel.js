@@ -20,7 +20,7 @@ class MasterModel {
             return result;
           })
           .catch((err) => {
-            console.log(err);
+            return err;
           });
       }
       static findYearAll() {
@@ -35,7 +35,7 @@ class MasterModel {
             return result;
           })
           .catch((err) => {
-            console.log(err);
+            return err;
           });
       } 
       
@@ -51,7 +51,7 @@ class MasterModel {
             return result;
           })
           .catch((err) => {
-            console.log(err);
+            return err;
           });
       } 
 
@@ -67,7 +67,7 @@ class MasterModel {
             return result;
           })
           .catch((err) => {
-            console.log(err);
+            return err;
           });
       }  
       
@@ -86,7 +86,7 @@ class MasterModel {
             return result;
           })
           .catch((err) => {
-            console.log(err);
+            return err;
           });
       }
 
@@ -105,7 +105,7 @@ class MasterModel {
             return result;
           })
           .catch((err) => {
-            console.log(err);
+            return err;
           });
       }
 
@@ -124,7 +124,7 @@ class MasterModel {
             return result;
           })
           .catch((err) => {
-            console.log(err);
+            return err;
           });
       }
 

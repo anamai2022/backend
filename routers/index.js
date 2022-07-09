@@ -27,4 +27,7 @@ router.use("/user", userRouter);
 const appoveRouter = require("./appove");
 router.use("/appove", appoveRouter);
 
+const uploadRouter = require("./upload");
+router.use("/upload", uploadRouter);
+
 module.exports = router;
