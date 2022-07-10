@@ -33,3 +33,6 @@ ADD COLUMN `f_questionWtSub` INT NULL DEFAULT 0 AFTER `f_questionWtMain`;
 
 ALTER TABLE `yfhsApp`.`tbl_Questionnaire` 
 CHANGE COLUMN `f_questionWtSub` `f_questionWtSub` FLOAT NULL DEFAULT '0' ;
+
+ALTER TABLE `yfhsApp`.`tbl_Upload` 
+CHANGE COLUMN `f_surveyId` `f_docrunning` INT(11) NULL DEFAULT NULL ;

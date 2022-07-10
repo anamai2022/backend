@@ -1,27 +1,27 @@
 module.exports = (sequelize, Sequelize) => {
-    const AttachmentFile = sequelize.define(
-      "Tbl_attachmentFile",
+    const UploadFile = sequelize.define(
+      "Tbl_upload",
       {
         f_code: {
           type: Sequelize.INTEGER,
           field: "f_code",
           primaryKey: true,
         },
+        f_surveyId: {
+          type: Sequelize.STRING,
+          field: "f_surveyId",
+        },
+        f_questionAnswerId: {
+          type: Sequelize.STRING,
+          field: "f_questionAnswerId",
+        },
         f_docrunning: {
           type: Sequelize.STRING,
-          field: "f_code",
+          field: "f_questionAnswerId",
         },
         f_userCode: {
           type: Sequelize.STRING,
           field: "f_userCode",
-        },
-        f_zone: {
-          type: Sequelize.STRING,
-          field: "f_zone",
-        },
-        f_province: {
-          type: Sequelize.STRING,
-          field: "f_province",
         },
         f_filedocument: {
           type: Sequelize.STRING,
@@ -35,30 +35,50 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.STRING,
           field: "f_filetype",
         },
-        f_status: {
-          type: Sequelize.STRING,
-          field: "f_status",
-        },
-        f_hospitalLevel: {
-          type: Sequelize.STRING,
-          field: "f_hospitalLevel",
-        },
         f_hospitalCode: {
           type: Sequelize.STRING,
           field: "f_hospitalCode",
-        },
-        f_positionCode: {
-          type: Sequelize.STRING,
-          field: "f_positionCode",
         },
         f_section: {
           type: Sequelize.STRING,
           field: "f_section",
         },
-        f_createdate: {
+        f_filesize: {
           type: Sequelize.STRING,
-          field: "f_createdate",
+          field: "f_filesize",
         },
+        f_year: {
+          type: Sequelize.STRING,
+          field: "f_year",
+        },
+        f_type: {
+          type: Sequelize.STRING,
+          field: "f_type",
+        },
+        f_statusDoucument: {
+          type: Sequelize.STRING,
+          field: "f_statusDoucument",
+        },
+        f_createDate: {
+          type: Sequelize.STRING,
+          field: "f_createDate",
+        },
+        f_createBy: {
+          type: Sequelize.STRING,
+          field: "f_createBy",
+        },
+        f_updateDate: {
+            type: Sequelize.STRING,
+            field: "f_updateDate",
+          },
+        f_updateBy: {
+            type: Sequelize.STRING,
+            field: "f_updateBy",
+          },
+        f_status: {
+            type: Sequelize.STRING,
+            field: "f_status",
+          },        
       },
       {
         timestamps: false,

@@ -7,6 +7,7 @@ exports.searchByGroup = (req, res)=>{
     if(result.length > 0){     
       res.json({
         result:result,
+        groupTotal: result.length,
         messagesboxs: 'Success',
       });
     }else{
