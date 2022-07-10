@@ -22,6 +22,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.AuthenDB = require('../schema/user/authen')(sequelize, Sequelize);
+db.AttachmentFileDB = require('../schema/upload/attachmentFile')(sequelize, Sequelize);
 db.UserContactDB = require('../schema/user/contact')(sequelize, Sequelize);
 db.UploadDB = require('../schema/upload/index')(sequelize, Sequelize);
 db.ProfileDB = require('../schema/profile/index')(sequelize, Sequelize);

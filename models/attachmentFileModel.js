@@ -2,10 +2,10 @@ const express = require("express");
 const Sequelize = require("sequelize");
 const db = require("../models/index");
 const Op = db.Sequelize.Op;
-const UploadDB = db.UploadDB;
-class UploadModel {
+const AttachmentFileDB = db.AttachmentFileDB;
+class AttachmentFileModel {
   static findByCode(f_code) {
-    return UploadDB.findAll({
+    return AttachmentFileDB.findAll({
       where: {
         f_code: {
           [Op.eq]: f_code,
@@ -23,7 +23,7 @@ class UploadModel {
       });
   }
   static findByDocumentRunning(f_docrunning) {
-    return UploadDB.findAll({
+    return AttachmentFileDB.findAll({
       where: {
         f_docrunning: {
           [Op.eq]: f_docrunning,
@@ -42,7 +42,7 @@ class UploadModel {
   }
   
   static findAll() {
-    return UploadDB.findAll()
+    return AttachmentFileDB.findAll()
       .then((result) => {
         return result;
       })
@@ -52,7 +52,7 @@ class UploadModel {
   }
 
   static updateAll(f_code,body) {
-    return UploadDB.update(body,{ where: { f_code: f_code }})
+    return AttachmentFileDB.update(body,{ where: { f_code: f_code }})
       .then((result) => {
         return result;
       })
@@ -62,7 +62,7 @@ class UploadModel {
   }
 
   static updateData(f_code,body) {
-    return UploadDB.update(body,{ where: { f_code: f_code }})
+    return AttachmentFileDB.update(body,{ where: { f_code: f_code }})
       .then((result) => {
         return result;
       })
@@ -71,7 +71,7 @@ class UploadModel {
       });
   }
   static deleteData(f_code) {
-    return UploadDB.destroy({
+    return AttachmentFileDB.destroy({
       where: { f_code: f_code },
     })
       .then((result) => {
@@ -83,7 +83,7 @@ class UploadModel {
   }
 
   static insertDB(payload) {
-    return UploadDB.create(payload)
+    return AttachmentFileDB.create(payload)
       .then((result) => {
         return result;
       })
@@ -93,4 +93,4 @@ class UploadModel {
   }
 
 }
-module.exports = UploadModel;
+module.exports = AttachmentFileModel;
