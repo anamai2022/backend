@@ -30,7 +30,8 @@ exports.loginCode = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   });  
 }

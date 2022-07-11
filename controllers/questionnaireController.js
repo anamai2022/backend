@@ -20,7 +20,8 @@ exports.searchByGroup = (req, res)=>{
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   });  
 }
@@ -42,7 +43,8 @@ exports.getData = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   });  
 };

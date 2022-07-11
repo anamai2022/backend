@@ -19,7 +19,8 @@ exports.getScore = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   });  
 };
@@ -41,7 +42,8 @@ exports.getYear = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   }); 
 };
@@ -64,7 +66,8 @@ exports.getZoneArea = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   }); 
 };
@@ -88,7 +91,8 @@ exports.getAllData = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   }); 
 };
@@ -112,7 +116,8 @@ exports.getAllLevel = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   }); 
 };
@@ -135,7 +140,8 @@ exports.getOrganization = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   }); 
 };
@@ -158,7 +164,8 @@ exports.getPosition = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   }); 
 };
@@ -182,7 +189,8 @@ exports.getInstitution = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   }); 
 };

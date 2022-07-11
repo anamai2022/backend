@@ -21,7 +21,8 @@ exports.getProfile = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   });  
 }
@@ -43,7 +44,8 @@ exports.getSendProfile = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   });  
 }
@@ -65,7 +67,8 @@ exports.getProfileName = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   });  
 }
@@ -87,7 +90,8 @@ exports.getAllData = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   }); 
 };
@@ -108,7 +112,9 @@ exports.getUpdateData = (req, res) => {
   })
   .catch((error) => {
     res.status(500).json({
-      messagesboxs: error,
+      messagesboxs: 'unSuccess',
+      result:"null",
+      messages: error,
     });
   });  
 }
@@ -131,7 +137,8 @@ exports.getUpdateAll = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   });  
 }
@@ -147,7 +154,8 @@ exports.getDeleteData = (req, res) => {
   .catch((error) => {
     res.status(500).json({
       messagesboxs: 'unSuccess',
-      messagesboxs: error,
+      result:"null",
+      messages: error,
     });
   });  
 }
@@ -171,8 +179,9 @@ exports.getSaveData = (req, res) =>{
     })
     .catch((error) => {
       res.status(500).json({
-        messagesboxs: 'unSuccess',        
-        message: error,
+        messagesboxs: 'unSuccess',
+        result:"null",
+        messages: error,
       });
     });
 }
