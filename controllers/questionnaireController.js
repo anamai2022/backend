@@ -46,6 +46,7 @@ exports.getData = (req, res) => {
     });
   });  
 };
+
 exports.searchById = (req, res) => {
   res.status(200).json({ message: "searchById" });
 };
