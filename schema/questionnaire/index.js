@@ -23,14 +23,6 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         field: "f_sequence",
       },
-      f_questionWtMain: {
-        type: Sequelize.STRING,
-        field: "f_questionWtMain",
-      },      
-      f_questionWtSub: {
-        type: Sequelize.STRING,
-        field: "f_questionWtSub",
-      },
       f_hadertitle: {
         type: Sequelize.STRING,
         field: "f_hadertitle",
@@ -52,6 +44,14 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         field: "f_description",
       },
+      f_questionWtMain: {
+        type: Sequelize.STRING,
+        field: "f_questionWtMain",
+      },      
+      f_questionWtSub: {
+        type: Sequelize.STRING,
+        field: "f_questionWtSub",
+      },      
       f_upload_file: {
         type: Sequelize.STRING,
         field: "f_upload_file",
@@ -72,10 +72,6 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         field: "f_form",
       },
-      f_total: {
-        type: Sequelize.STRING,
-        field: "f_total",
-      },
       f_fromextra: {
         type: Sequelize.STRING,
         field: "f_fromextra",
@@ -84,13 +80,9 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         field: "f_fromname",
       },
-      f_yeartotal: {
+      f_fromType: {
         type: Sequelize.STRING,
-        field: "f_yeartotal",
-      },
-      f_addyeartotal: {
-        type: Sequelize.STRING,
-        field: "f_addyeartotal",
+        field: "f_fromType",
       },
       f_createDate: {
         type: Sequelize.STRING,
