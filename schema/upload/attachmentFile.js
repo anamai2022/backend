@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         f_docrunning: {
           type: Sequelize.STRING,
-          field: "f_code",
+          field: "f_docrunning",
         },
         f_userCode: {
           type: Sequelize.STRING,
