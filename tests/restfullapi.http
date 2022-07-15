@@ -2,7 +2,7 @@
 @port = 4000
 @host = {{hostname}}:{{port}}
 @contentType = application/json
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmX2NvZGUiOjI0NCwiZl9sb2dpbiI6Im1hZXNhaWhvczAxIiwiaWF0IjoxNjU3NDI1ODg0LCJleHAiOjE2NTc0Mjk0ODR9.wPe5lsyoj4l1yLqmmkcL-yP_fYGwI7OSr-xc_FdQx2E
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmX2NvZGUiOjU3LCJmX2xvZ2luIjoiQlRDMDM3WUZIUyIsImlhdCI6MTY1Nzg2MzMxOCwiZXhwIjoxNjU3ODY2OTE4fQ.5UbCwPTDiSg7-CAQ4zaacbmR95hcw4Dlgc82pNJ3TCg
 @contactId = 3
 @contactName =SaveContact
 @userId = 3
@@ -10,6 +10,28 @@
 @zonearea=4
 @dateTest = 2565-01-06 11:00:00
 @group = G1
+@f_hospitalCode= 13682
+@f_docrunning= 2565071512223013682
+
+###
+GET http://{{host}}/score/{{f_hospitalCode}}/{{f_docrunning}}
+###
+POST  http://{{host}}/score/
+Content-Type: {{contentType}}
+Authorization: Bearer {{accessToken}}
+{
+    "f_firstName": "name test",
+    "f_lastName": "lastname test",
+    "f_nickname":"test",
+    "f_phone":"",
+    "f_email":"info@gmail.com",
+    "f_line":"",
+    "f_remark":"",
+    "f_createDate":"2565-01-06 11:00:00",
+    "f_createBy":"1",
+    "f_status": 1
+}
+
 ###
 GET http://{{host}}/questionnaire/group/{{group}} HTTP/1.1
 Content-Type: {{contentType}}

@@ -51,7 +51,6 @@ exports.getAllData = (req, res) => {
 
 
 exports.getSaveProfile = (req, res) =>{
-  console.log('payload SAVE : ',req.body)
   profileModel.SaveData(req.body)
   .then((result) => {
     res.json({

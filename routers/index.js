@@ -30,4 +30,7 @@ router.use("/appove", appoveRouter);
 const uploadRouter = require("./upload");
 router.use("/upload", uploadRouter);
 
+const scoreRouter = require("./score");
+router.use("/score", scoreRouter);
+
 module.exports = router;
