@@ -7,9 +7,9 @@ module.exports = (sequelize, Sequelize) => {
           field: "f_code",
           primaryKey: true,
         },
-        f_surveyId: {
+        f_docrunning: {
           type: Sequelize.STRING,
-          field: "f_surveyId",
+          field: "f_docrunning",
         },
         f_questionAnswerId: {
           type: Sequelize.STRING,

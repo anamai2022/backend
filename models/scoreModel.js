@@ -4,31 +4,36 @@ const db = require("../models/index");
 const Op = db.Sequelize.Op;
 const answerScoreDB = db.answerScoreDB;
 class scoreModel {
-  static findByCode(f_hospitalCode,f_docrunning) {
-    return ScoreDB.findAll({
+  static findByCode(f_hospitalCode,f_docrunning,f_year,f_section) {
+    return answerScoreDB.findAll({
       where: {
         f_hospitalCode: {
           [Op.eq]: f_hospitalCode,
         },
         f_docrunning: {
           [Op.eq]: f_docrunning,
-        },        
+        },
+        f_year: {
+          [Op.eq]: f_year,
+        },  
+        f_section:{
+          [Op.eq]: f_section,
+        },       
         f_status: {
           [Op.eq]: 1,
         },
       },
+      order: [['f_createdate', 'DESC']]
     })
-      .then((result) => {
-        console.log(result)
+      .then((result) => {        
         return result;
       })
-      .catch((err) => {
-        console.log(err)
+      .catch((err) => {        
         return err;
       });
   }
   static findByDocRunning(f_docrunning) {
-    return ScoreDB.findAll({
+    return answerScoreDB.findAll({
       where: {
         f_docrunning: {
           [Op.eq]: f_docrunning,
@@ -47,7 +52,7 @@ class scoreModel {
   }
   
   static findAll() {
-    return ScoreDB.findAll()
+    return answerScoreDB.findAll()
       .then((result) => {
         return result;
       })
@@ -55,9 +60,36 @@ class scoreModel {
         return err;
       });
   }
-
+  static findDocumentById(f_hospitalCode,f_docrunning,f_year,f_codetitle){
+    return answerScoreDB.findAll({
+      where: {
+        f_hospitalCode: {
+          [Op.eq]: f_hospitalCode,
+        },
+        f_docrunning: {
+          [Op.eq]: f_docrunning,
+        },
+        f_year: {
+          [Op.eq]: f_year,
+        },
+        f_codetitle: {
+          [Op.eq]: f_codetitle,
+        },                        
+        f_status: {
+          [Op.eq]: 1,
+        },
+      },
+      order: [['f_createdate', 'DESC']]
+    })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err;
+      });    
+  }
   static updateAll(f_code,body) {
-    return ScoreDB.update(body,{ where: { f_code: f_code }})
+    return ScoreanswerScoreDBDB.update(body,{ where: { f_code: f_code }})
       .then((result) => {
         return result;
       })
@@ -67,7 +99,7 @@ class scoreModel {
   }
 
   static updateData(f_code,body) {
-    return ScoreDB.update(body,{ where: { f_code: f_code }})
+    return answerScoreDB.update(body,{ where: { f_code: f_code }})
       .then((result) => {
         return result;
       })
@@ -76,7 +108,7 @@ class scoreModel {
       });
   }
   static deleteData(f_code) {
-    return ScoreDB.destroy({
+    return answerScoreDB.destroy({
       where: { f_code: f_code },
     })
       .then((result) => {

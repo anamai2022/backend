@@ -13,7 +13,14 @@ router.post(
 );
 
 router.get(
-  "/:f_hospitalCode/:f_docrunning",
+  "/:f_hospitalCode/:f_docrunning/:f_year/:f_section",
+  authenticateJWT,
+  scoreController.getScoreById,
+  function (req, res) {}
+);
+
+router.get(
+  "document/:f_hospitalCode/:f_docrunning/:f_year/:f_year/:f_codetitle",
   authenticateJWT,
   scoreController.getScoreById,
   function (req, res) {}

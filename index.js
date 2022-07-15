@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 const app = express();
 const logger = require("morgan");
 const router = require("./routers/index");
@@ -10,6 +11,8 @@ app.use(cors({
     origin: ['https://yfhs.anamai.moph.go.th', 'http://localhost:8080'],
 }));
 app.use(logger("dev"));
+app.use("/public", express.static("public"));
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
