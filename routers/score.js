@@ -20,9 +20,16 @@ router.get(
 );
 
 router.get(
-  "document/:f_hospitalCode/:f_docrunning/:f_year/:f_year/:f_codetitle",
+  "/document/:f_hospitalCode/:f_docrunning/:f_year/:f_year/:f_codetitle",
   authenticateJWT,
-  scoreController.getScoreById,
+  scoreController.getSearchScoreById,
+  function (req, res) {}
+);
+
+router.get(
+  "/group/:f_hospitalCode/:f_year",
+  authenticateJWT,
+  scoreController.groupDocumentById,
   function (req, res) {}
 );
 module.exports = router;

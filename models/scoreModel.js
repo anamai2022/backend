@@ -1,12 +1,47 @@
 const express = require("express");
 const Sequelize = require("sequelize");
+const sequelize = require("sequelize");
 const db = require("../models/index");
 const Op = db.Sequelize.Op;
+const { QueryTypes } = require('sequelize');
 const answerScoreDB = db.answerScoreDB;
+
 class scoreModel {
   static findByCode(f_hospitalCode,f_docrunning,f_year,f_section) {
     return answerScoreDB.findAll({
       where: {
+        f_hospitalCode: {
+          [Op.eq]: f_hospitalCode,
+        },
+        f_docrunning: {
+          [Op.eq]: f_docrunning,
+        },
+        f_year: {
+          [Op.eq]: f_year,
+        },  
+        f_section:{
+          [Op.eq]: f_section,
+        },       
+        f_status: {
+          [Op.eq]: 1,
+        },
+      },
+      order: [['f_createdate', 'DESC']]
+    })
+      .then((result) => {        
+        return result;
+      })
+      .catch((err) => {        
+        return err;
+      });
+  }
+
+  static findByCodes(f_hospitalCode,f_docrunning,f_year,f_section,f_codetitle) {
+    return answerScoreDB.findAll({
+      where: {
+        f_codetitle:{
+          [Op.eq]: f_codetitle,
+        },
         f_hospitalCode: {
           [Op.eq]: f_hospitalCode,
         },
@@ -51,6 +86,41 @@ class scoreModel {
       });
   }
   
+  static groupByDocRunning(f_hospitalCode,f_year) {
+    return answerScoreDB.query(
+      'SELECT DISTINCT(f_docrunning) AS codedocrunning FROM tbl_answerscore AS tbl_answerscore WHERE tbl_answerscore WHERE f_hospitalCode = :f_hospitalCode and f_year = :f_year and f_status = 1'  ,
+      {
+        replacements: { f_hospitalCode: f_hospitalCode, f_year: f_year },
+        type: QueryTypes.SELECT
+      }
+    )
+    // answerScoreDB.findAll({
+    //   attributes:  {
+    //     include: [
+    //       [sequelize.fn('DISTINCT', sequelize.col('f_docrunning')), 'docrunningcode']
+    //     ]
+    //   },
+    //   where: {
+    //     f_hospitalCode: {
+    //       [Op.eq]: f_hospitalCode,
+    //     },
+    //     f_year: {
+    //       [Op.eq]: f_year,
+    //     },
+    //     f_status: {
+    //       [Op.eq]: 1,
+    //     },        
+    //   },      
+    // })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }  
+  
+
   static findAll() {
     return answerScoreDB.findAll()
       .then((result) => {
