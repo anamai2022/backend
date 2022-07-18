@@ -3,10 +3,9 @@ const Sequelize = require("sequelize");
 const sequelize = require("sequelize");
 const db = require("../models/index");
 const Op = db.Sequelize.Op;
-const { QueryTypes } = require('sequelize');
-const answerScoreDB = db.answerScoreDB;
+const flowAnswerDB = db.flowAnswerDB;
 
-class scoreModel {
+class flowAnswerModel {
   static findByCode(f_hospitalCode,f_docrunning,f_year,f_section) {
     return answerScoreDB.findAll({
       where: {
@@ -189,4 +188,4 @@ class scoreModel {
   }
 
 }
-module.exports = scoreModel;
+module.exports = flowAnswerModel;
