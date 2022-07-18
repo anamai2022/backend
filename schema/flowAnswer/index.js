@@ -87,6 +87,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         field: "f_year",
       },
+      f_hospitalCode:{
+        type: Sequelize.STRING,
+        field:"f_hospitalCode",
+      },
       f_levelOnetoday: {
         type: Sequelize.STRING,
         field: "f_levelOnetoday",
@@ -125,7 +129,8 @@ module.exports = (sequelize, Sequelize) => {
       },
       f_status: {
         type: Sequelize.STRING,
-        f      
+        field: "f_status",
+      },     
     },
     {
       timestamps: false,

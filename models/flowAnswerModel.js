@@ -6,148 +6,30 @@ const Op = db.Sequelize.Op;
 const flowAnswerDB = db.flowAnswerDB;
 
 class flowAnswerModel {
-  static findByCode(f_hospitalCode,f_docrunning,f_year,f_section) {
-    return answerScoreDB.findAll({
-      where: {
-        f_hospitalCode: {
-          [Op.eq]: f_hospitalCode,
+  static findByCode(f_hospitalCode, f_running, f_year) {
+    return flowAnswerDB.findAll({
+        where: {
+          f_hospitalCode: {
+            [Op.eq]: f_hospitalCode,
+          },
+          f_running: {
+            [Op.eq]: f_running,
+          },
+          f_year: {
+            [Op.eq]: f_year,
+          },
+          f_statusAppove: {
+            [Op.eq]: 0,
+          },
+          f_appove: {
+            [Op.eq]: 0,
+          },
+          f_status: {
+            [Op.eq]: 1,
+          },
         },
-        f_docrunning: {
-          [Op.eq]: f_docrunning,
-        },
-        f_year: {
-          [Op.eq]: f_year,
-        },  
-        f_section:{
-          [Op.eq]: f_section,
-        },       
-        f_status: {
-          [Op.eq]: 1,
-        },
-      },
-      order: [['f_createdate', 'DESC']]
-    })
-      .then((result) => {        
-        return result;
+        order: [["f_createdate", "DESC"]],
       })
-      .catch((err) => {        
-        return err;
-      });
-  }
-
-  static findByCodes(f_hospitalCode,f_docrunning,f_year,f_section,f_codetitle) {
-    return answerScoreDB.findAll({
-      where: {
-        f_codetitle:{
-          [Op.eq]: f_codetitle,
-        },
-        f_hospitalCode: {
-          [Op.eq]: f_hospitalCode,
-        },
-        f_docrunning: {
-          [Op.eq]: f_docrunning,
-        },
-        f_year: {
-          [Op.eq]: f_year,
-        },  
-        f_section:{
-          [Op.eq]: f_section,
-        },       
-        f_status: {
-          [Op.eq]: 1,
-        },
-      },
-      order: [['f_createdate', 'DESC']]
-    })
-      .then((result) => {        
-        return result;
-      })
-      .catch((err) => {        
-        return err;
-      });
-  }
-  static findByDocRunning(f_docrunning) {
-    return answerScoreDB.findAll({
-      where: {
-        f_docrunning: {
-          [Op.eq]: f_docrunning,
-        },
-        f_status: {
-          [Op.eq]: 1,
-        },
-      },
-    })
-      .then((result) => {
-        return result;
-      })
-      .catch((err) => {
-        return err;
-      });
-  }
-  
-  static groupByDocRunning(f_hospitalCode,f_year) {
-    return answerScoreDB.findAll({
-      limit: 1,     
-      where: {
-        f_hospitalCode: {
-          [Op.eq]: f_hospitalCode,
-        },
-        f_year: {
-          [Op.eq]: f_year,
-        },
-        f_status: {
-          [Op.eq]: 1,
-        },        
-      },      
-    })
-      .then((result) => {       
-        return result;
-      })
-      .catch((err) => {
-        return err;
-      });
-  }  
-  
-
-  static findAll() {
-    return answerScoreDB.findAll()
-      .then((result) => {
-        return result;
-      })
-      .catch((err) => {
-        return err;
-      });
-  }
-  static findDocumentById(f_hospitalCode,f_docrunning,f_year,f_codetitle){
-    return answerScoreDB.findAll({
-      where: {
-        f_hospitalCode: {
-          [Op.eq]: f_hospitalCode,
-        },
-        f_docrunning: {
-          [Op.eq]: f_docrunning,
-        },
-        f_year: {
-          [Op.eq]: f_year,
-        },
-        f_codetitle: {
-          [Op.eq]: f_codetitle,
-        },                        
-        f_status: {
-          [Op.eq]: 1,
-        },
-      },
-      order: [['f_createdate', 'DESC']]
-    })
-      .then((result) => {
-        return result;
-      })
-      .catch((err) => {
-        return err;
-      });    
-  }
-  static updateAll(f_code,body) {
-    return ScoreanswerScoreDBDB.update(body,{ where: { f_code: f_code }})
       .then((result) => {
         return result;
       })
@@ -156,8 +38,19 @@ class flowAnswerModel {
       });
   }
 
-  static updateData(f_code,body) {
-    return answerScoreDB.update(body,{ where: { f_code: f_code }})
+  static updateAll(f_code, body) {
+    return flowAnswerDB.update(body, { where: { f_code: f_code } })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }
+
+  static updateData(f_code, body) {
+    return flowAnswerDB
+      .update(body, { where: { f_code: f_code } })
       .then((result) => {
         return result;
       })
@@ -166,9 +59,10 @@ class flowAnswerModel {
       });
   }
   static deleteData(f_code) {
-    return answerScoreDB.destroy({
-      where: { f_code: f_code },
-    })
+    return flowAnswerDB
+      .destroy({
+        where: { f_code: f_code },
+      })
       .then((result) => {
         return result;
       })
@@ -178,7 +72,8 @@ class flowAnswerModel {
   }
 
   static insertDB(payload) {
-    return answerScoreDB.create(payload)
+    return flowAnswerDB
+      .create(payload)
       .then((result) => {
         return result;
       })
@@ -186,6 +81,6 @@ class flowAnswerModel {
         return err;
       });
   }
-
+  
 }
 module.exports = flowAnswerModel;

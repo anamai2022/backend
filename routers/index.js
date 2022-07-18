@@ -33,4 +33,7 @@ router.use("/upload", uploadRouter);
 const scoreRouter = require("./score");
 router.use("/score", scoreRouter);
 
+const flowAnswerRouter = require("./flowAnswer");
+router.use('/flowAnswer',flowAnswerRouter);
+
 module.exports = router;
