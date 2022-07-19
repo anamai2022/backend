@@ -36,6 +36,106 @@ class scoreModel {
       });
   }
 
+  static findSumScoreByDocrunning(f_hospitalCode,f_docrunning,f_year,f_section,f_question_group) {
+    return answerScoreDB.findAll({
+      where: {
+        f_hospitalCode: {
+          [Op.eq]: f_hospitalCode,
+        },
+        f_docrunning: {
+          [Op.eq]: f_docrunning,
+        },
+        f_year: {
+          [Op.eq]: f_year,
+        },  
+        f_section:{
+          [Op.eq]: f_section,
+        },
+        f_question_group:{
+          [Op.eq]: f_question_group,
+        },       
+        f_status: {
+          [Op.eq]: 1,
+        },
+      }, 
+      attributes: [[sequelize.fn('sum', sequelize.col('f_score')), 'f_score']],
+      raw: true,       
+    })
+      .then((result) => {        
+        return result;
+      })
+      .catch((err) => {        
+        return err;
+      });
+  }
+
+  static findSumScoreByDocrunning(f_hospitalCode,f_docrunning,f_year,f_section,f_question_group) {
+    return answerScoreDB.findAll({
+      where: {
+        f_hospitalCode: {
+          [Op.eq]: f_hospitalCode,
+        },
+        f_docrunning: {
+          [Op.eq]: f_docrunning,
+        },
+        f_year: {
+          [Op.eq]: f_year,
+        },  
+        f_section:{
+          [Op.eq]: f_section,
+        },
+        f_question_group:{
+          [Op.eq]: f_question_group,
+        },       
+        f_status: {
+          [Op.eq]: 1,
+        },
+      }, 
+      attributes: [[sequelize.fn('sum', sequelize.col('f_score')), 'f_score']],
+      raw: true,       
+    })
+      .then((result) => {        
+        return result;
+      })
+      .catch((err) => {        
+        return err;
+      });
+  }
+
+  static findCountScoreByDocrunning(f_hospitalCode,f_docrunning,f_year,f_section,f_question_group) {
+    return answerScoreDB.findAll({
+      where: {
+        f_hospitalCode: {
+          [Op.eq]: f_hospitalCode,
+        },
+        f_docrunning: {
+          [Op.eq]: f_docrunning,
+        },
+        f_year: {
+          [Op.eq]: f_year,
+        },  
+        f_section:{
+          [Op.eq]: f_section,
+        },
+        f_question_group:{
+          [Op.eq]: f_question_group,
+        },       
+        f_status: {
+          [Op.eq]: 1,
+        },
+      }, 
+      attributes: [[sequelize.fn('count', sequelize.col('f_score')), 'f_score']],
+      raw: true,       
+    })
+      .then((result) => {        
+        return result;
+      })
+      .catch((err) => {        
+        return err;
+      });
+  }
+  
+  
   static findByCodes(f_hospitalCode,f_docrunning,f_year,f_section,f_codetitle) {
     return answerScoreDB.findAll({
       where: {

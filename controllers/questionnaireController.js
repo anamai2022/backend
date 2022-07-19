@@ -25,6 +25,23 @@ exports.searchByGroup = (req, res)=>{
     });
   });  
 }
+
+exports.getCountScoreByDocrunning= (req, res) => { 
+  questionnaireModel.findCountScoreByDocrunning(req.params.f_hadertitle,req.params.f_section,req.params.f_question_group)
+  .then((result) => {
+    res.json({
+      result:result,
+      messagesboxs: 'Success',
+    })
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: 'unSuccess',
+      result:"null",
+      messages: error,
+    });
+  }); 
+};
 exports.getData = (req, res) => {
   questionnaireModel.findAll()
   .then((result) => {

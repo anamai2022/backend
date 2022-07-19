@@ -48,4 +48,11 @@ router.delete(
   function (req, res) {}
 );
 
+
+router.get(
+  "/countquestion/:f_hadertitle/:f_section/:f_question_group",
+  authenticateJWT,
+  questionnaireControllers.getCountScoreByDocrunning,
+  function (req, res) {}
+);
 module.exports = router;

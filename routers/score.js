@@ -32,4 +32,19 @@ router.get(
   scoreController.groupDocumentById,
   function (req, res) {}
 );
+
+router.get(
+  "/sumscore/:f_hospitalCode/:f_docrunning/:f_year/:f_section/:f_question_group",
+  authenticateJWT,
+  scoreController.getSumScoreByDocrunning,
+  function (req, res) {}
+);
+
+
+router.get(
+  "/countscore/:f_hospitalCode/:f_docrunning/:f_year/:f_section/:f_question_group",
+  authenticateJWT,
+  scoreController.getCountScoreByDocrunning,
+  function (req, res) {}
+);
 module.exports = router;
