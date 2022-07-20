@@ -36,4 +36,7 @@ router.use("/score", scoreRouter);
 const flowAnswerRouter = require("./flowAnswer");
 router.use('/flowAnswer',flowAnswerRouter);
 
+const answerRouter = require("./answer");
+router.use('/answer',answerRouter);
+
 module.exports = router;
