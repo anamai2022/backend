@@ -10,10 +10,6 @@ const SLASH_DMYHMS = 'YYYY-MM-DD HH:mm:ss';
 
 exports.getUploadController = (req, res, next) => {
   try {
-   console.log(req.file);
-   console.log(req.file.originalname);
-   console.log(req.file.filename);
-    //คำสั่ง Try เป็นส่วนของบริเวณที่คาดการว่าอาจจะเกิดเหตุผิดปกติของโปรแกรม
     res.status(200).send({
       message: "Uploaded the file successfully ",
       originalname: req.file.originalname,
@@ -32,10 +28,20 @@ exports.getUploadController = (req, res, next) => {
 
 exports.getUploadSaveController = (req, res) => {
   try {
-    if (req.body !== null || req.body == "") {
-      console.log(req.body)    
-      AttachmentFileModel.insertDB(req.body)
-        
+    if (req.body !== null || req.body == "") {      
+      AttachmentFileModel.insertDB(req.body) 
+      .then((result) => {
+        res.status(200).json({
+        messagesboxs: "Success", 
+      })
+    })
+    .catch((error) => {
+      res.status(500).json({
+        messagesboxs: "unSuccess",
+        result: "null",
+        messages: error,
+      });
+    });       
     } else {
       res.status(500).send({
         message: "กรุณาส่งข้อมูลมาลงระบบ",

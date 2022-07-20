@@ -6,7 +6,7 @@ const { authenticateJWT } = require("../middleware/authenticateJWT");
 const answerController = require("../controllers/answerController");
 
 router.get(
-  "/questionnaire",
+  "/questionnaire/:f_docrunning/:f_year/:f_hospitalCode",
   authenticateJWT,
   answerController.getScoreByRunning,
   function (req, res) {}

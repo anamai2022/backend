@@ -6,15 +6,14 @@ const answerModel = require("../models/answerModel");
 exports.getScoreByRunning = (req, res) => {
   const id = uuid_v4();
   answerModel
-    .findScoreByDocumentRunning()
+    .findQuestionAndScore(req.params.f_docrunning,req.params.f_year,req.params.f_hospitalCode)
     .then((result) => {
       if (result.length > 0) {
-        var question = result
         answerModel.findCountQuestionnaireGroup()
         .then((results)=>{   
           res.status(200).json({
             messagesboxs: "Success",  
-            QuestionnaireId : 9999999999999,
+            QuestionnaireId : id,
             QuestionnaireHeader: "แบบสำรวจการประเมินตนเอง",
             QuestionnaireName: "แบบสำรวจการประเมินตนเอง",
             QuestionnaireNickname: "แบบการประเมินตนเอง",
@@ -28,7 +27,7 @@ exports.getScoreByRunning = (req, res) => {
             CountQuestion: result.length,
             CountStep:results.length,
             GroupTab:results,              
-            Step:question,                                      
+            Step:result,                                      
           });                            
         })
         .catch((error) => {
@@ -41,6 +40,8 @@ exports.getScoreByRunning = (req, res) => {
       } else {
         res.json({
           messagesboxs: "unSuccess",
+          result: "null",
+          messages: error,          
         });
       }
     })

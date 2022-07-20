@@ -35,6 +35,14 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.STRING,
           field: "f_filetype",
         },
+        f_filesize: {
+          type: Sequelize.STRING,
+          field: "f_filesize",
+        },
+        f_year: {
+          type: Sequelize.STRING,
+          field: "f_year",
+        },                
         f_status: {
           type: Sequelize.STRING,
           field: "f_status",
@@ -55,9 +63,26 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.STRING,
           field: "f_section",
         },
+        f_type: {
+          type: Sequelize.STRING,
+          field: "f_type",
+        },
         f_createdate: {
           type: Sequelize.STRING,
           field: "f_createdate",
+        },
+        f_questioncode: {
+          type: Sequelize.STRING,
+          field: "f_questioncode",
+        },
+        f_additional_message: {
+          type: Sequelize.STRING,
+          field: "f_additional_message",
+        },
+
+        f_address_url: {
+          type: Sequelize.STRING,
+          field: "f_address_url",
         },
       },
       {
