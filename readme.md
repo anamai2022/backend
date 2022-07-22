@@ -27,7 +27,13 @@ yarn add core-js element-ui moment @ckeditor/ckeditor5-build-classic @ckeditor/c
  show databases;
  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Irisgroup';
  ```
+# Get Questionnaire
+ http://localhost:4000/questionnaire/
  # Get Answer
  http://localhost:4000/answer/questionnaire/256513682/2565/13682
- # Get Question
+ # Get Running Number
+ http://localhost:4000/score/finddocument/13682/2565
+ # Get File Upload Show
+ http://localhost:4000/upload/show/256513682/13682/2565/2
+
  
