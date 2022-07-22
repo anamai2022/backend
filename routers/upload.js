@@ -23,5 +23,6 @@ const uploadControllers = require('../controllers/uploadControllers');
 router.post("/", upload.single('file'), uploadControllers.getUploadController);
 router.post("/save", uploadControllers.getUploadSaveController);
 router.get('/:f_code',uploadControllers.getImageController);
+router.get('/show/:f_docrunning/:f_hospitalCode/:f_year/:f_code',uploadControllers.getDataImgAndFileController);
 
 module.exports = router;

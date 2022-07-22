@@ -47,4 +47,11 @@ router.get(
   scoreController.getCountScoreByDocrunning,
   function (req, res) {}
 );
+
+router.get(
+  "/finddocument/:f_hospitalCode/:f_year/",
+  authenticateJWT,
+  scoreController.getDocuemtCodeByHospitalCode,
+  function (req, res) {}
+);
 module.exports = router;

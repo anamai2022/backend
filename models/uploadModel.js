@@ -3,6 +3,7 @@ const Sequelize = require("sequelize");
 const db = require("../models/index");
 const Op = db.Sequelize.Op;
 const UploadDB = db.UploadDB;
+
 class UploadModel {
   static findByCode(f_code) {
     return UploadDB.findAll({

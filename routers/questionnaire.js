@@ -6,8 +6,14 @@ const { authenticateJWT } = require('../middleware/authenticateJWT')
 const questionnaireControllers = require('../controllers/questionnaireController');
 
 router.get(
-  "/",
+  "/",authenticateJWT,
   questionnaireControllers.getData,
+  function (req, res) {}
+);
+
+router.get(
+  "/headers", authenticateJWT,
+  questionnaireControllers.getHeadersTitle,
   function (req, res) {}
 );
 

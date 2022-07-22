@@ -34,6 +34,22 @@ exports.getScoreById = (req, res) => {
       });
     }); 
 };
+exports.getDocuemtCodeByHospitalCode = (req, res) => { 
+  scoreModel.findDocumentCode(req.params.f_hospitalCode,req.params.f_year)
+  .then((result) => {
+    res.json({
+      result:result,
+      messagesboxs: 'Success',
+    })
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: 'unSuccess',
+      result:"null",
+      messages: error,
+    });
+  }); 
+};
 
 exports.getSumScoreByDocrunning= (req, res) => { 
   scoreModel.findSumScoreByDocrunning(req.params.f_hospitalCode,req.params.f_docrunning,req.params.f_year,req.params.f_section,req.params.f_question_group)

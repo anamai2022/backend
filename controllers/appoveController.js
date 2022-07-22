@@ -1,9 +1,9 @@
 const express = require("express");
-const HospitalModel = require("../models/HospitalModel");
+const hospitalModel = require("../models/hospitalModel");
 
 
 exports.getProfileByZoneArea = (req, res) => {
-  HospitalModel.findHospitalZoneAreByCode(req.params.f_code)
+  hospitalModel.findHospitalZoneAreByCode(req.params.f_code)
   .then((result) => {
     if (result.length > 0) {
       res.json({
@@ -23,6 +23,5 @@ exports.getProfileByZoneArea = (req, res) => {
     });
   });
 };
-
 
 exports.appoveController = (req, res, next) => {};

@@ -24,6 +24,24 @@ class QuestionnaireModel {
         return err;
       });
   }
+  static findHeadersTitle() {
+    return QuestionnaireDB.findAll({
+      where: {
+        f_hadertitle: {
+          [Op.eq]: 1,
+        },        
+        f_status: {
+          [Op.eq]: 1, 
+        },
+      },
+    })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {        
+        return err;
+      });
+}
 
   static findAll() {
     return QuestionnaireDB.findAll({

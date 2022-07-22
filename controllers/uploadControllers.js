@@ -148,4 +148,22 @@ exports.getImageController = (req, res) => {
   });
 };
 
+exports.getDataImgAndFileController= (req, res) => {
+  AttachmentFileModel
+  .findByDocumentCodeAndYear(req.params.f_docrunning, req.params.f_hospitalCode, req.params.f_year, req.params.f_code)
+  .then((result) => {
+    res.status(200).json({
+      data: {
+        data: result,
+      },
+      messagesboxs: 'Success',
+    });
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: error,
+    });
+  });
+};
+
 exports.uploadControllers = (req, res, next) => {};

@@ -4,6 +4,33 @@ const db = require("../models/index");
 const Op = db.Sequelize.Op;
 const AttachmentFileDB = db.AttachmentFileDB;
 class AttachmentFileModel {
+  static findByDocumentCodeAndYear(f_docrunning,f_hospitalCode,f_year,f_code) {
+    return AttachmentFileDB.findAll({
+      where: {
+        f_year:{
+          [Op.eq]:f_year,
+        },
+        f_hospitalCode:{
+          [Op.eq]:f_hospitalCode,
+        },
+        f_docrunning:{
+          [Op.eq]:f_docrunning,
+        },
+        f_code: {
+          [Op.eq]: f_code,
+        },
+        f_status: {
+          [Op.eq]: 1,
+        },
+      },
+    })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {        
+        return err;
+      });
+  }
   static findByCode(f_code) {
     return AttachmentFileDB.findAll({
       where: {
