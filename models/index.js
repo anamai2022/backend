@@ -27,6 +27,7 @@ db.UploadDB = require('../schema/upload/index')(sequelize, Sequelize);
 db.ProfileDB = require('../schema/profile/index')(sequelize, Sequelize);
 db.ContactDB = require('../schema/contact/index')(sequelize, Sequelize);
 db.HospitalDB = require('../schema/hospital/index')(sequelize, Sequelize);
+db.HospitalViewDB = require('../schema/hospital/view')(sequelize, Sequelize);
 db.MasterDB = require('../schema/master/index')(sequelize, Sequelize);
 db.ScoreDB = require('../schema/master/score')(sequelize, Sequelize);
 db.YearDB = require('../schema/master/year')(sequelize, Sequelize);

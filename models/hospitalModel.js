@@ -3,7 +3,58 @@ const Sequelize = require("sequelize");
 const db = require("../models/index");
 const Op = db.Sequelize.Op;
 const HospitalDB = db.HospitalDB;
+const HospitalViewDB = db.HospitalViewDB;
 class HospitalModel {
+  static findListZoneAreByCode(f_zonearea){
+    return HospitalViewDB.findAll({
+      where: {
+        f_zonearea: {
+          [Op.eq]: f_zonearea,
+        },
+        f_usertype:{
+          [Op.eq]: 2,
+        },
+        f_statusHospital: {
+          [Op.eq]: 1,
+        },
+        f_statusUser: {
+          [Op.eq]: 1,
+        },        
+      },
+    })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }
+
+  static findZoneAreLevel(f_zonearea,f_level){
+    return HospitalViewDB.findAll({
+      where: {
+        f_zonearea: {
+          [Op.eq]: f_zonearea,
+        },
+        f_usertype: {
+          [Op.eq]: f_level,
+        },        
+        f_statusHospital: {
+          [Op.eq]: 1,
+        },
+        f_statusUser: {
+          [Op.eq]: 1,
+        },        
+      },
+    })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }
+
   static findByCode(f_code) {
     return HospitalDB.findAll({
       where: {

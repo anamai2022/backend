@@ -36,4 +36,9 @@ yarn add core-js element-ui moment @ckeditor/ckeditor5-build-classic @ckeditor/c
  # Get File Upload Show
  http://localhost:4000/upload/show/256513682/13682/2565/2
 
+ ### Levle 3 HPC3000000 
+ # Get list Hospital
+ http://localhost:4000/appove/zonelist/1
+ ### Levle 2 PJ-YFHS000
+
  
