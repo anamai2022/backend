@@ -546,3 +546,91 @@ CREATE TABLE `tbl_Logs` (
   CONSTRAINT `tbl_logs_ibfk_1` FOREIGN KEY (`f_questionnaireCode`) REFERENCES `tbl_questionnaire` (`f_code`),
   CONSTRAINT `tbl_logs_ibfk_2` FOREIGN KEY (`f_createBy`) REFERENCES `tbl_user` (`f_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- yfhsApp.tv_grouphospital source
+
+CREATE OR REPLACE
+ALGORITHM = UNDEFINED VIEW `tv_grouphospital` AS
+select
+    `tbl_hospital`.`f_code` AS `f_code`,
+    `tbl_user`.`f_login` AS `f_login`,
+    `tbl_hospital`.`f_hospitalcode` AS `f_hospitalcode`,
+    `tbl_hospital`.`f_hospitalname` AS `f_hospitalname`,
+    `tbl_hospital`.`f_province` AS `f_province`,
+    `tbl_hospital`.`f_zoneArea` AS `f_zoneArea`,
+    `tbl_zonearea`.`f_zoneAreaName` AS `f_zoneAreaName`,
+    `tbl_hospital`.`f_type_hospital` AS `f_type_hospital`,
+    `tbl_user`.`f_usertype` AS `f_usertype`,
+    `tbl_hospital`.`f_status` AS `f_statusHospital`,
+    `tbl_user`.`f_status` AS `f_statusUser`
+from
+    ((`tbl_hospital`
+join `tbl_user` on
+    ((`tbl_hospital`.`f_hospitalcode` = `tbl_user`.`f_contactId`)))
+join `tbl_zonearea` on
+    ((`tbl_hospital`.`f_zoneArea` = `tbl_zonearea`.`f_code`)))
+order by
+    `tbl_hospital`.`f_code`;
+
+-- yfhsApp.tv_score source
+
+CREATE OR REPLACE
+ALGORITHM = UNDEFINED VIEW `tv_score` AS
+select
+    `tbl_answerscore`.`f_code` AS `f_code`,
+    `tbl_answerscore`.`f_codetitle` AS `f_codetitle`,
+    `tbl_answerscore`.`f_docrunning` AS `f_docrunning`,
+    `tbl_answerscore`.`f_section` AS `f_section`,
+    `tbl_answerscore`.`f_question_group` AS `f_question_group`,
+    `tbl_answerscore`.`f_hospitalCode` AS `f_hospitalCode`,
+    `tbl_answerscore`.`f_year` AS `f_year`,
+    `tbl_answerscore`.`f_score` AS `f_score`,
+    `tbl_questionnaire`.`f_questionWtMain` AS `f_questionWtMain`,
+    `tbl_questionnaire`.`f_questionWtSub` AS `f_questionWtSub`,
+    `tbl_questionnaire`.`f_hadertitle` AS `f_hadertitle`,
+    `tbl_answerscore`.`f_title` AS `f_title`,
+    `tbl_questionnaire`.`f_upload_file` AS `f_upload_file`,
+    `tbl_questionnaire`.`f_upload_image` AS `f_upload_image`,
+    `tbl_questionnaire`.`f_address_url` AS `f_address_url`,
+    `tbl_questionnaire`.`f_additional_message` AS `f_additional_message`,
+    `tbl_questionnaire`.`f_form` AS `f_form`,
+    `tbl_questionnaire`.`f_fromextra` AS `f_fromextra`,
+    `tbl_questionnaire`.`f_fromname` AS `f_fromname`,
+    `tbl_questionnaire`.`f_fromType` AS `f_fromType`,
+    `tbl_answerscore`.`f_createdate` AS `f_createdate`,
+    `tbl_answerscore`.`f_status` AS `f_status`
+from
+    (`tbl_answerscore`
+join `tbl_questionnaire` on
+    ((`tbl_answerscore`.`f_codetitle` = `tbl_questionnaire`.`f_code`)))
+where
+    `tbl_answerscore`.`f_createdate` in (
+    select
+        max(`tbl_answerscore`.`f_createdate`) AS `f_createdate`
+    from
+        `tbl_answerscore`
+    group by
+        `tbl_answerscore`.`f_codetitle`)
+order by
+    `tbl_questionnaire`.`f_code`,
+    `tbl_answerscore`.`f_code`;    
+
+-- yfhsApp.tv_Users source
+
+CREATE OR REPLACE
+ALGORITHM = UNDEFINED VIEW `tv_users` AS
+select
+    `tc`.`f_contactId` AS `f_contactId`,
+    `tc`.`f_firstName` AS `f_firstName`,
+    `tc`.`f_lastName` AS `f_lastName`,
+    `tc`.`f_email` AS `f_email`,
+    `tu`.`f_login` AS `f_login`,
+    `tu`.`f_password` AS `f_password`,
+    `tu`.`f_admintype` AS `f_admintype`,
+    `tu`.`f_usertype` AS `f_usertype`,
+    `tu`.`f_status` AS `f_userStatus`,
+    `tc`.`f_status` AS `f_contactStatus`
+from
+    (`tbl_contact` `tc`
+join `tbl_user` `tu` on
+    ((`tc`.`f_contactId` = `tu`.`f_contactId`)));    

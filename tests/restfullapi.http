@@ -12,6 +12,14 @@
 @group = G1
 @f_hospitalCode= 13682
 @f_docrunning= 2565071512223013682
+@f_login = BTC003YFHS
+
+###
+POST  http://{{host}}/logincode/
+Content-Type: application/json
+{
+    "f_login": {{f_login}},
+}
 
 ###
 GET http://{{host}}/score/{{f_hospitalCode}}/{{f_docrunning}}
