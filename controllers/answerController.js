@@ -19,7 +19,7 @@ exports.getScoreByRunning = (req, res) => {
             .then((resultScore) => {
               const dataSet = {
                 QuestionnaireId: id,
-                QuestionnaireHeader: "แบบสำรวจการประเมินตนเอง",
+                QuestionnaireHeader: "แบบการประเมินตนเอง",
                 QuestionnaireName: "แบบสำรวจการประเมินตนเอง",
                 QuestionnaireNickname: "แบบการประเมินตนเอง",
                 QuestionnaireDescription: "แบบสำรวจการประเมินตนเอง",
