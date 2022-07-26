@@ -157,5 +157,22 @@ exports.getDataImgAndFileController= (req, res) => {
     });
   });
 };
+exports.getDataImgAndFileTrashController= (req, res) => {
+  AttachmentFileModel
+  .findByDocumentCodeAndYearTrash(req.params.f_docrunning, req.params.f_hospitalCode, req.params.f_year, req.params.f_code)
+  .then((result) => {  
+    res.status(200).json({
+      messagesboxs: 'Success',      
+      countAttachmentFile: result.length,
+      AttachmentFile: result,
+    });
+  })
+  .catch((error) => {
+    res.status(500).json({
+      messagesboxs: 'unSuccess', 
+      messagesboxs: error,
+    });
+  });
+};
 
 exports.uploadControllers = (req, res, next) => {};

@@ -112,6 +112,12 @@ exports.getScoreByRunning = (req, res) => {
                                             AttachmentCode: Attachments.f_code,
                                             DocumentRunningCode:
                                               Attachments.f_docrunning,
+                                            DocumentYear:
+                                              Attachments.f_year,
+                                            DocumentHospitalCode:
+                                              Attachments.f_hospitalCode,
+                                            DocumentQuestionCode:
+                                              Attachments.f_questioncode,                                                                                                                                          
                                             AttachmentUsers:
                                               Attachments.f_userCode,
                                             AttachmentsFileName:
@@ -126,7 +132,7 @@ exports.getScoreByRunning = (req, res) => {
                                               Attachments.f_status,
                                             AttachmentType: Attachments.f_type,
                                             AttachmentCrateDate:
-                                              Attachments.f_createdate,
+                                              Attachments.f_createdate, 
                                           };
                                         }),
                                     };

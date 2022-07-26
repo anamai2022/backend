@@ -31,6 +31,33 @@ class AttachmentFileModel {
         return err;
       });
   }
+    static findByDocumentCodeAndYearTrash(f_docrunning,f_hospitalCode,f_year,f_code) {
+    return AttachmentFileDB.findAll({
+      where: {
+        f_year:{
+          [Op.eq]: f_year,
+        },
+        f_hospitalCode:{
+          [Op.eq]: f_hospitalCode,
+        },
+        f_docrunning:{
+          [Op.eq]: f_docrunning,
+        },
+        f_questioncode: {
+          [Op.eq]: f_code,
+        },
+        f_status: {
+          [Op.eq]: 0,
+        },
+      },
+    })
+      .then((result) => {
+        return result;
+      })
+      .catch((err) => {        
+        return err;
+      });
+  }
   static findByCode(f_code) {
     return AttachmentFileDB.findAll({
       where: {

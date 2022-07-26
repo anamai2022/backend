@@ -83,10 +83,6 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.STRING,
           field: "f_address_url",
         },
-        f_questioncode: {
-          type: Sequelize.STRING,
-          field: "f_questioncode",
-        },
       },
       {
         timestamps: false,
