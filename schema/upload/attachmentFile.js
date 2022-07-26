@@ -79,10 +79,13 @@ module.exports = (sequelize, Sequelize) => {
           type: Sequelize.STRING,
           field: "f_additional_message",
         },
-
         f_address_url: {
           type: Sequelize.STRING,
           field: "f_address_url",
+        },
+        f_questioncode: {
+          type: Sequelize.STRING,
+          field: "f_questioncode",
         },
       },
       {

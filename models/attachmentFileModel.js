@@ -8,15 +8,15 @@ class AttachmentFileModel {
     return AttachmentFileDB.findAll({
       where: {
         f_year:{
-          [Op.eq]:f_year,
+          [Op.eq]: f_year,
         },
         f_hospitalCode:{
-          [Op.eq]:f_hospitalCode,
+          [Op.eq]: f_hospitalCode,
         },
         f_docrunning:{
-          [Op.eq]:f_docrunning,
+          [Op.eq]: f_docrunning,
         },
-        f_code: {
+        f_questioncode: {
           [Op.eq]: f_code,
         },
         f_status: {

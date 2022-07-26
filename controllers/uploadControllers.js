@@ -16,12 +16,10 @@ exports.getUploadController = (req, res, next) => {
       filename: req.file.filename
     });
   } catch (err) {
-    //คำสั่ง Catch เป็นส่วนของการแก้ไขข้อผิดพลาด หรือความผิดปกติของโปรแกรม
     res.status(500).send({
       message: `Could not upload the file: . ${err}`,
     });
   } finally {
-    // คำสั่ง Finally เป็นส่วนเสริม สำหรับการทำงานก่อนจบ การจัดการความผิดปกติของโปรแกรม
     console.log("Commit Finally Uploaded the file successfully ");
   }
 };
@@ -110,22 +108,16 @@ exports.getUploadFileController = (req, res) => {
 
 exports.getUploadImageController = (req, res) => {
   try {
-    // console.log(req.file);
-  //   console.log(req.file.originalname);
-   //  console.log(req.file.filename);
-     //คำสั่ง Try เป็นส่วนของบริเวณที่คาดการว่าอาจจะเกิดเหตุผิดปกติของโปรแกรม
      res.status(200).send({
        message: "Uploaded the image file successfully ",
        originalname: req.file.originalname,
        filename: req.file.filename
      });
    } catch (err) {
-     //คำสั่ง Catch เป็นส่วนของการแก้ไขข้อผิดพลาด หรือความผิดปกติของโปรแกรม
      res.status(500).send({
        message: `Could not upload the file: . ${err}`,
      });
    } finally {
-     // คำสั่ง Finally เป็นส่วนเสริม สำหรับการทำงานก่อนจบ การจัดการความผิดปกติของโปรแกรม
      console.log("Commit Finally Uploaded the file successfully ");
    }
 };
@@ -151,16 +143,16 @@ exports.getImageController = (req, res) => {
 exports.getDataImgAndFileController= (req, res) => {
   AttachmentFileModel
   .findByDocumentCodeAndYear(req.params.f_docrunning, req.params.f_hospitalCode, req.params.f_year, req.params.f_code)
-  .then((result) => {
+  .then((result) => {  
     res.status(200).json({
-      data: {
-        data: result,
-      },
-      messagesboxs: 'Success',
+      messagesboxs: 'Success',      
+      countAttachmentFile: result.length,
+      AttachmentFile: result,
     });
   })
   .catch((error) => {
     res.status(500).json({
+      messagesboxs: 'unSuccess', 
       messagesboxs: error,
     });
   });
