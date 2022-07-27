@@ -61,6 +61,7 @@ exports.getScoreByRunning = (req, res) => {
                                 ShowHeaderTitle: Question.f_title,
                                 ShowDesc: Question.f_detail,
                                 ScoreWT: Question.f_questionWtMain,
+                                ScoreLength: Question.f_questionWtSub,
                                 ShowDesction: Question.f_description,
                                 ShowUploadFile: Question.f_upload_file,
                                 ShowUploadImage: Question.f_upload_image,
@@ -69,6 +70,7 @@ exports.getScoreByRunning = (req, res) => {
                                 ShowForm: Question.f_form,
                                 ShowFormName: Question.f_fromname,
                                 ShowFormType: Question.f_fromType,
+                                ShowDescription: Question.f_description,
                                 SumChoice: resultx.filter(
                                   (x) => x.f_section == Question.f_section
                                 ).length,
@@ -117,7 +119,9 @@ exports.getScoreByRunning = (req, res) => {
                                             DocumentHospitalCode:
                                               Attachments.f_hospitalCode,
                                             DocumentQuestionCode:
-                                              Attachments.f_questioncode,                                                                                                                                          
+                                              Attachments.f_questioncode, 
+                                            DocumentAddMessage:Attachments.f_additional_message,   
+                                            DocumentAddressURL:Attachments.f_address_url,                                                                                                                                       
                                             AttachmentUsers:
                                               Attachments.f_userCode,
                                             AttachmentsFileName:
