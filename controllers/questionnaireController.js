@@ -1,5 +1,9 @@
 const express = require("express");
+const { v4: uuid_v4 } = require("uuid");
+const moment = require("moment");
 const questionnaireModel = require("../models/questionnaireModel");
+const answerModel = require("../models/answerModel");
+const AttachmentFileModel = require("../models/attachmentFileModel");
 
 exports.searchByGroup = (req, res)=>{ 
   questionnaireModel.findByCode(req.params.group)
@@ -43,27 +47,52 @@ exports.getCountScoreByDocrunning= (req, res) => {
   }); 
 };
 exports.getData = (req, res) => {
+  const id = uuid_v4();  
+  const TabGroupCount = 0
+  const Question = null
+  const dataSetQuestion = null
+  answerModel.findCountQuestionnaireGroup() 
+  .then((results) => {
+    var GroupTabs = {
+      GroupTab: results.length,
+      GroupTabName:results,
+    }  
+  })
+  .catch((error) => {
+    console.log(error.toString())
+  });  
+
   questionnaireModel.findAll()
   .then((result) => {
-    if(result.length > 0){     
-      res.json({
-        result:result,
-        messagesboxs: 'Success',
-      });
-    }else{
-      res.json({
-        result:"null",
-        messagesboxs: 'unSuccess',
-      });
+    dataSetQuestion = {
+      CountQuestion: result.length,
+      GroupTabCount: TabGroupCount,  
     }
   })
   .catch((error) => {
-    res.status(500).json({
-      messagesboxs: 'unSuccess',
-      result:"null",
-      messages: error,
-    });
-  });  
+    console.log(error.toString())
+  }); 
+  const DataSend ={
+    QuestionnaireId: id,
+    QuestionnaireHeader: "แบบการประเมินตนเอง",
+    QuestionnaireName: "แบบสำรวจการประเมินตนเอง",
+    QuestionnaireNickname: "แบบการประเมินตนเอง",
+    QuestionnaireDescription: "แบบสำรวจการประเมินตนเอง",
+    QuestionnaireRemark: "แบบสำรวจการประเมินตนเอง",
+    Url: "/questionnaire",
+    StartDate: moment(new Date()).format(
+      "YYYY-MM-DD HH:mm:ss"
+    ),
+    EndDate: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+    IsActive: true,
+    IsPublish: true,
+    Questionnaire: dataSetQuestion,
+  } 
+  res.json({
+    messagesboxs: "Success",
+    StatusCode: res.statuscode,
+    Data: DataSend,
+  })
 };
 
 exports.getHeadersTitle = (req, res) => {
