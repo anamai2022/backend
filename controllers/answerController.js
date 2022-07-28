@@ -1,6 +1,7 @@
 const express = require("express");
 const { v4: uuid_v4 } = require("uuid");
 const moment = require("moment");
+const ConfigApp = require("../confgs/config.json");
 const answerModel = require("../models/answerModel");
 const QuestionnaireModel = require("../models/QuestionnaireModel");
 const AttachmentFileModel = require("../models/attachmentFileModel");
@@ -10,10 +11,10 @@ exports.getScoreByRunning = (req, res) => {
   const f_docrunning = req.params.f_docrunning;
   const f_year = req.params.f_year;
   const f_hospitalCode = req.params.f_hospitalCode;
-  QuestionnaireModel.findAll() 
+  QuestionnaireModel.findAll()
     .then((resultx) => {
       answerModel
-        .findCountQuestionnaireGroup() 
+        .findCountQuestionnaireGroup()
         .then((results) => {
           answerModel
             .findQuestionAndScore(f_docrunning, f_year, f_hospitalCode)
@@ -28,16 +29,20 @@ exports.getScoreByRunning = (req, res) => {
                   .then((resultAttachment) => {
                     const dataSet = {
                       QuestionnaireId: id,
-                      QuestionnaireHeader: "แบบการประเมินตนเอง",
-                      QuestionnaireName: "แบบสำรวจการประเมินตนเอง",
-                      QuestionnaireNickname: "แบบการประเมินตนเอง",
-                      QuestionnaireDescription: "แบบสำรวจการประเมินตนเอง",
-                      QuestionnaireRemark: "แบบสำรวจการประเมินตนเอง",
+                      QuestionnaireHeader: ConfigApp.QuestionnaireHeader,
+                      QuestionnaireName: ConfigApp.QuestionnaireName,
+                      QuestionnaireNickname: ConfigApp.QuestionnaireNickname,
+                      QuestionnaireDescription:
+                        ConfigApp.QuestionnaireDescription,
+                      QuestionnaireRemark: ConfigApp.QuestionnaireRemark,
+                      Url: ConfigApp.QuestionnaireUrl,
                       Url: "/questionnaire",
                       StartDate: moment(new Date()).format(
                         "YYYY-MM-DD HH:mm:ss"
                       ),
-                      EndDate: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+                      EndDate: moment(new Date())
+                        .add(1, "y")
+                        .format("YYYY-MM-DD HH:mm:ss"),
                       IsActive: true,
                       IsPublish: true,
                       CountQuestion: resultx.length,
@@ -72,7 +77,9 @@ exports.getScoreByRunning = (req, res) => {
                                 ShowFormType: Question.f_fromType,
                                 ShowDescription: Question.f_description,
                                 SumChoice: resultx.filter(
-                                  (x) => x.f_section == Question.f_section
+                                  (x) =>
+                                    x.f_section == Question.f_section &&
+                                    Question.f_hadertitle == 0
                                 ).length,
                                 Answers: resultScore
                                   .filter(
@@ -114,14 +121,15 @@ exports.getScoreByRunning = (req, res) => {
                                             AttachmentCode: Attachments.f_code,
                                             DocumentRunningCode:
                                               Attachments.f_docrunning,
-                                            DocumentYear:
-                                              Attachments.f_year,
+                                            DocumentYear: Attachments.f_year,
                                             DocumentHospitalCode:
                                               Attachments.f_hospitalCode,
                                             DocumentQuestionCode:
-                                              Attachments.f_questioncode, 
-                                            DocumentAddMessage:Attachments.f_additional_message,   
-                                            DocumentAddressURL:Attachments.f_address_url,                                                                                                                                       
+                                              Attachments.f_questioncode,
+                                            DocumentAddMessage:
+                                              Attachments.f_additional_message,
+                                            DocumentAddressURL:
+                                              Attachments.f_address_url,
                                             AttachmentUsers:
                                               Attachments.f_userCode,
                                             AttachmentsFileName:
@@ -136,7 +144,7 @@ exports.getScoreByRunning = (req, res) => {
                                               Attachments.f_status,
                                             AttachmentType: Attachments.f_type,
                                             AttachmentCrateDate:
-                                              Attachments.f_createdate, 
+                                              Attachments.f_createdate,
                                           };
                                         }),
                                     };
@@ -145,19 +153,19 @@ exports.getScoreByRunning = (req, res) => {
                             }),
                         };
                       }),
-                    };                    
-                    return res.status(200).json({
+                    };
+                    return res.status(200).send({
                       messagesboxs: "Success",
                       UserQuestionAnswer: dataSet,
-                    });                  
+                    });
                   })
-                  .catch((error) => {    
-                    console.log(error.toString())
+                  .catch((error) => {
+                    console.log(error.toString());
                   });
               }
             })
             .catch((error) => {
-              return  res.status(500).json({
+              return res.status(500).json({
                 messagesboxs: "unSuccess",
                 result: "null",
                 messages: error,

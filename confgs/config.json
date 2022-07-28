@@ -1,0 +1,10 @@
+{
+    "ShowConsole":false,
+    "MasterGroupQuestionnaire":500001,
+    "QuestionnaireHeader":"แบบการประเมินตนเอง",
+    "QuestionnaireName":"แบบสำรวจการประเมินตนเอง",
+    "QuestionnaireNickname":"แบบการประเมินตนเอง",
+    "QuestionnaireDescription":"แบบสำรวจการประเมินตนเอง",
+    "QuestionnaireRemark":"แบบสำรวจการประเมินตนเอง",
+    "QuestionnaireUrl":"/questionnaire"
+}
